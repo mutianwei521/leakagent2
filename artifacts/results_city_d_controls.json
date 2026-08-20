@@ -1,0 +1,40 @@
+{
+  "provenance": {
+    "network": "city_d (optimized placement)",
+    "sigma_m": 0.15,
+    "n_controls": 50,
+    "seed": 7,
+    "path": "identical to eval/run_city_d.py controls (diagnose + SupervisorAgent, twin cache loaded); presets B/C evaluated on the same final evidence packages",
+    "presets": {
+      "A_transfer": "exist 0.5 / margin 0.10 / alt 0.30 / region 80 / mahal 3.0",
+      "B_audit": "exist 0.7 / margin 0.15 / alt 0.20 / region 80 / mahal 3.0",
+      "C_floor": "preset A plus hard observation floor max|dp_obs| >= 0.45 m"
+    },
+    "register_note": "preset A dispatches 5/194 on the register (the committed headline); B and C yield zero register dispatches (every acted existence value is below 0.7, and no register observation reaches the 0.45 m floor)"
+  },
+  "false_dispatches": {
+    "A_transfer": 1,
+    "B_audit": 0,
+    "C_floor": 1
+  },
+  "false_alarm_rates": {
+    "A_transfer": 0.02,
+    "B_audit": 0.0,
+    "C_floor": 0.02
+  },
+  "fired_controls": [
+    {
+      "control": 29,
+      "max_abs_dp_obs_m": 0.45,
+      "max_obs_in_sigma": 3.0,
+      "existence": 0.5103,
+      "margin": 0.25,
+      "mahal": 0.748,
+      "passes": {
+        "A": true,
+        "B": false,
+        "C": true
+      }
+    }
+  ]
+}

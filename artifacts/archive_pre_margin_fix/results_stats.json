@@ -1,0 +1,149 @@
+{
+  "provenance": {
+    "network": "exa7",
+    "noise_m": 0.05,
+    "seeds": [
+      17,
+      42,
+      101,
+      2025,
+      31337
+    ],
+    "n_full": 850
+  },
+  "per_severity_leak_acc": {
+    "2.0 L/s": {
+      "acc": 0.27,
+      "n": 100,
+      "values": [
+        0.2,
+        0.25,
+        0.25,
+        0.25,
+        0.4
+      ]
+    },
+    "5.0 L/s": {
+      "acc": 0.6,
+      "n": 100,
+      "values": [
+        0.6,
+        0.55,
+        0.65,
+        0.6,
+        0.6
+      ]
+    },
+    "10.0 L/s": {
+      "acc": 0.77,
+      "n": 100,
+      "values": [
+        0.9,
+        0.7,
+        0.8,
+        0.7,
+        0.75
+      ]
+    },
+    "20.0 L/s": {
+      "acc": 0.93,
+      "n": 100,
+      "values": [
+        0.9,
+        0.95,
+        0.9,
+        0.9,
+        1.0
+      ]
+    },
+    "35.0 L/s": {
+      "acc": 0.93,
+      "n": 100,
+      "values": [
+        0.95,
+        0.85,
+        0.9,
+        0.95,
+        1.0
+      ]
+    },
+    "50.0 L/s": {
+      "acc": 0.97,
+      "n": 100,
+      "values": [
+        1.0,
+        1.0,
+        0.95,
+        0.95,
+        0.95
+      ]
+    }
+  },
+  "differential_confusion_pooled": {
+    "classes": [
+      "leak",
+      "demand_anomaly",
+      "sensor_fault",
+      "valve_misstate",
+      "none"
+    ],
+    "matrix": [
+      [
+        548,
+        40,
+        0,
+        9,
+        3
+      ],
+      [
+        2,
+        98,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        39,
+        21,
+        15
+      ],
+      [
+        9,
+        6,
+        10,
+        33,
+        17
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "mcnemar_vs_retrieval_pooled": {
+    "n10_system_only": 228,
+    "n01_retrieval_only": 32,
+    "chi2_cc": 146.25,
+    "significant_p<0.05": true
+  },
+  "ablation_no_differential": {
+    "full_confounder_false_dispatch": [
+      1,
+      250
+    ],
+    "no_diff_confounder_false_dispatch": [
+      39,
+      250
+    ]
+  },
+  "ablation_loosened_contract": {
+    "acted": 550,
+    "false_dispatch": 105,
+    "precision": 0.8090909090909091
+  }
+}

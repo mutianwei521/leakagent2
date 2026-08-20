@@ -1,0 +1,105 @@
+{
+  "provenance": {
+    "network": "city_d_v2",
+    "n_junctions": 542,
+    "partition_k": 15,
+    "n_sensors": 23,
+    "n_scenarios_per_seed": 110,
+    "noise_m": 0.05,
+    "seeds": [
+      17,
+      42,
+      101,
+      2025,
+      31337
+    ],
+    "leak_cands": 25,
+    "protocol": "identical generator/metrics to eval/run_experiments.py"
+  },
+  "multiseed_sigma0.05": {
+    "forced_retrieval_top1": {
+      "mean": 0.45,
+      "std": 0.04564354645876385,
+      "n": 5,
+      "values": [
+        0.4167,
+        0.4,
+        0.45,
+        0.5167,
+        0.4667
+      ]
+    },
+    "leak_partition_acc_no_active": {
+      "mean": 0.47000000000000003,
+      "std": 0.05451809077932043,
+      "n": 5,
+      "values": [
+        0.4667,
+        0.3833,
+        0.5167,
+        0.5167,
+        0.4667
+      ]
+    },
+    "leak_partition_acc_with_active": {
+      "mean": 0.4866666666666667,
+      "std": 0.02472066162365222,
+      "n": 5,
+      "values": [
+        0.4833,
+        0.45,
+        0.5167,
+        0.5,
+        0.4833
+      ]
+    },
+    "decision_precision_at_maxcov": {
+      "mean": 0.8008658008658008,
+      "std": 0.07187503946660823,
+      "n": 5,
+      "values": [
+        0.9091,
+        0.7083,
+        0.7857,
+        0.7917,
+        0.8095
+      ]
+    },
+    "coverage_at_maxcov": {
+      "mean": 0.21636363636363637,
+      "std": 0.024393468845452237,
+      "n": 5,
+      "values": [
+        0.2,
+        0.2182,
+        0.2545,
+        0.2182,
+        0.1909
+      ]
+    },
+    "coverage_at_100pct_precision": {
+      "mean": 0.034545454545454546,
+      "std": 0.04995866059648758,
+      "n": 5,
+      "values": [
+        0.1091,
+        0.0,
+        0.0,
+        0.0636,
+        0.0
+      ]
+    },
+    "false_dispatch_at_maxcov": {
+      "mean": 0.19913419913419914,
+      "std": 0.07187503946660825,
+      "n": 5,
+      "values": [
+        0.0909,
+        0.2917,
+        0.2143,
+        0.2083,
+        0.1905
+      ]
+    }
+  }
+}

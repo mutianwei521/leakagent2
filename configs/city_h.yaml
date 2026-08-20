@@ -1,0 +1,15 @@
+# City H municipal WDN (diagnosed against the NOMINAL dataset/city_h.inp).
+# Real SCADA pressure is confidential/unavailable; observations are register-anchored
+# SEMI-SYNTHETIC (data/city_h_anchor_corpus.py + Methods). Sensor placement is
+# a degree-based topological observability proxy (real sensor layout is confidential).
+network: city_h
+inp_file: data/city_h/city_h.inp
+partition_file: data/city_h/partitions.pkl
+partition_k: 25
+sensor_fingerprints_file: data/city_h/sensor_fingerprints.json
+partition_adjacency_file: data/city_h/partition_adjacency.json
+demand_periods:
+  day_normal: 1.0
+leak_pattern: null
+noise:
+  sensor_std: 0.15

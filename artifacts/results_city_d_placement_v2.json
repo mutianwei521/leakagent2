@@ -1,0 +1,102 @@
+{
+  "provenance": {
+    "objective": "greedy nearest-(zone,rate)-centroid classification accuracy over the cached library, averaged over 1 clean + 2 sigma=0.05 noisy copies (seed 7); library-only",
+    "n_sensors": 23
+  },
+  "old_sensors": [
+    "736",
+    "3083",
+    "369",
+    "319",
+    "2476",
+    "39-A",
+    "2284",
+    "1136",
+    "1142",
+    "195",
+    "43-A",
+    "640",
+    "186",
+    "2382",
+    "37-A",
+    "2298",
+    "1312",
+    "1080",
+    "358",
+    "1437",
+    "1390",
+    "584",
+    "248"
+  ],
+  "new_sensors": [
+    "1171",
+    "568",
+    "176",
+    "82-B",
+    "90-A",
+    "1123",
+    "2179-A",
+    "57-A",
+    "182",
+    "208",
+    "1918",
+    "2273",
+    "66-A",
+    "167",
+    "611",
+    "196",
+    "824",
+    "1208",
+    "607",
+    "1034",
+    "1331",
+    "265",
+    "91-A"
+  ],
+  "objective_old": 0.5004444444444444,
+  "objective_new": 0.6426666666666666,
+  "detection_old": {
+    "coverage_at_0.05m": 0.8066666666666666,
+    "coverage_at_0.45m": 0.3471111111111111,
+    "median_best_dp_m": 0.22944259643554688
+  },
+  "detection_new": {
+    "coverage_at_0.05m": 0.7795555555555556,
+    "coverage_at_0.45m": 0.30044444444444446,
+    "median_best_dp_m": 0.1973876953125
+  },
+  "trial_standard_protocol": {
+    "forced_retrieval_top1": {
+      "mean": 0.45,
+      "std": 0.04564354645876385
+    },
+    "leak_partition_acc_no_active": {
+      "mean": 0.47000000000000003,
+      "std": 0.05451809077932043
+    },
+    "leak_partition_acc_with_active": {
+      "mean": 0.4866666666666667,
+      "std": 0.02472066162365222
+    },
+    "decision_precision_at_maxcov": {
+      "mean": 0.8008658008658008,
+      "std": 0.07187503946660823
+    },
+    "coverage_at_maxcov": {
+      "mean": 0.21636363636363637,
+      "std": 0.024393468845452237
+    },
+    "coverage_at_100pct_precision": {
+      "mean": 0.034545454545454546,
+      "std": 0.04995866059648758
+    },
+    "false_dispatch_at_maxcov": {
+      "mean": 0.19913419913419914,
+      "std": 0.07187503946660825
+    }
+  },
+  "adoption_decision": {
+    "adopted": false,
+    "rationale": "v2 achieved its design goal (zone-classification proxy 50.0->64.3%, twin-fit 45.0->48.7% with s.d. halved, coverage 18.4->21.6%) but headline precision moved 83.8+/-14.9 -> 80.1+/-7.2 (statistically indistinguishable, not an improvement) and library detection coverage@0.45m fell 34.7->30.0%, which would weaken the register/severity detectability. Discriminability and detection trade off on this stiff network; the standard-leg bottleneck is intrinsic signature confusability, not placement. Current (v1 detection-coverage) placement retained."
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "seeds": [
+    17,
+    42,
+    101,
+    2025,
+    31337
+  ],
+  "legacy": [
+    {
+      "leak_acc": 0.7667,
+      "precision": 0.975,
+      "coverage": 0.3636,
+      "cov_at_100": 0.0364,
+      "gate": 3.0
+    },
+    {
+      "leak_acc": 0.8833,
+      "precision": 1.0,
+      "coverage": 0.3909,
+      "cov_at_100": 0.3909,
+      "gate": 3.0
+    },
+    {
+      "leak_acc": 0.8167,
+      "precision": 0.975,
+      "coverage": 0.3636,
+      "cov_at_100": 0.2727,
+      "gate": 3.0
+    },
+    {
+      "leak_acc": 0.7833,
+      "precision": 0.9756,
+      "coverage": 0.3727,
+      "cov_at_100": 0.0909,
+      "gate": 3.0
+    },
+    {
+      "leak_acc": 0.8667,
+      "precision": 0.9524,
+      "coverage": 0.3818,
+      "cov_at_100": 0.3091,
+      "gate": 3.0
+    }
+  ],
+  "fixed": [
+    {
+      "leak_acc": 0.7667,
+      "precision": 0.9756,
+      "coverage": 0.3727,
+      "cov_at_100": 0.0364,
+      "gate": 3.0
+    },
+    {
+      "leak_acc": 0.8667,
+      "precision": 1.0,
+      "coverage": 0.3909,
+      "cov_at_100": 0.3909,
+      "gate": 3.0
+    },
+    {
+      "leak_acc": 0.8167,
+      "precision": 0.9348,
+      "coverage": 0.4182,
+      "cov_at_100": 0.0,
+      "gate": 3.0
+    },
+    {
+      "leak_acc": 0.7667,
+      "precision": 0.9767,
+      "coverage": 0.3909,
+      "cov_at_100": 0.1,
+      "gate": 3.0
+    },
+    {
+      "leak_acc": 0.8667,
+      "precision": 0.92,
+      "coverage": 0.4545,
+      "cov_at_100": 0.1182,
+      "gate": 3.0
+    }
+  ],
+  "flips": [
+    3,
+    2,
+    6,
+    4,
+    9
+  ]
+}

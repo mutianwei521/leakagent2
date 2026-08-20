@@ -1,0 +1,47 @@
+{
+  "executor_model": "gpt-oss:120b-cloud",
+  "supervisor_model": "deepseek-v4-pro:cloud",
+  "n_cases": 16,
+  "note": "two different LLM families; numbers from twin; small demo",
+  "decision_agreement_llm_vs_deterministic": 1.0,
+  "correct_decisions_deterministic": 0.875,
+  "correct_decisions_dual_llm": 0.875,
+  "sample_plans": [
+    {
+      "include_demand": false,
+      "include_sensor": false,
+      "include_valve": false,
+      "rationale": "All deviations modest; no pattern for demand, sensor, or valve."
+    },
+    {
+      "include_demand": true,
+      "include_sensor": false,
+      "include_valve": true,
+      "rationale": "Widespread large negative deviations across nearly all sensors"
+    },
+    {
+      "include_demand": false,
+      "include_sensor": false,
+      "include_valve": true,
+      "rationale": "Widespread large negative drops suggest valve mis\u2011state, not isolated faults"
+    },
+    {
+      "include_demand": true,
+      "include_sensor": false,
+      "include_valve": true,
+      "rationale": "Broad pressure drop across most sensors suggests demand or valve issue."
+    },
+    {
+      "include_demand": false,
+      "include_sensor": false,
+      "include_valve": true,
+      "rationale": "Almost all sensors low; indicates network-wide valve issue."
+    },
+    {
+      "include_demand": true,
+      "include_sensor": false,
+      "include_valve": true,
+      "rationale": "Widespread large drops suggest demand or valve issue, not isolated sensor."
+    }
+  ]
+}

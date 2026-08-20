@@ -1,0 +1,41 @@
+{
+  "provenance": {
+    "signal_source": "results_city_d_ceiling_flow.json (twin-computed deltas)",
+    "rule": "one-sided CUSUM per zone, k = sigma_f/2, h calibrated by 4000-campaign Monte Carlo to ~0.5% campaign FA (matching the corrected fixed-window rule); dispatch to the argmax zone on first crossing within the real work-order window (cap 14)",
+    "seed": 42,
+    "n_controls": 50,
+    "w_controls": 5
+  },
+  "results": {
+    "sigma0.05": {
+      "sigma_f_Ls": 0.05,
+      "k": 0.025,
+      "h": 0.2615,
+      "survey_dispatched": 105,
+      "coverage": 0.5412371134020618,
+      "zone_correct": 104,
+      "precision_on_dispatched": 0.9904761904761905,
+      "controls_false_alarm": "0/50"
+    },
+    "sigma0.1": {
+      "sigma_f_Ls": 0.1,
+      "k": 0.05,
+      "h": 0.523,
+      "survey_dispatched": 78,
+      "coverage": 0.4020618556701031,
+      "zone_correct": 76,
+      "precision_on_dispatched": 0.9743589743589743,
+      "controls_false_alarm": "0/50"
+    },
+    "sigma0.2": {
+      "sigma_f_Ls": 0.2,
+      "k": 0.1,
+      "h": 1.0459,
+      "survey_dispatched": 60,
+      "coverage": 0.30927835051546393,
+      "zone_correct": 58,
+      "precision_on_dispatched": 0.9666666666666667,
+      "controls_false_alarm": "0/50"
+    }
+  }
+}

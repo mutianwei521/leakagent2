@@ -1,0 +1,15 @@
+# City D district WDN (FIELD leg: the utility's own EPANET model +
+# the audited 2025 field leak register, data/city_d/leak_corpus.json).
+# No SCADA pressures exist for these events: observations are twin-simulated
+# with field noise. Sensor placement is a degree-based observability proxy.
+network: city_d
+inp_file: data/city_d/city_d.inp
+partition_file: data/city_d/partitions.pkl
+partition_k: 15
+sensor_fingerprints_file: data/city_d/sensor_fingerprints_v2.json
+partition_adjacency_file: data/city_d/partition_adjacency.json
+demand_periods:
+  day_normal: 1.0
+leak_pattern: null
+noise:
+  sensor_std: 0.15

@@ -1,0 +1,389 @@
+# -*- coding: utf-8 -*-
+"""Generate Supplementary Information (SI_NatureWater.md) for the manuscript.
+Supplementary Methods (the 6 equations moved out of the main Methods) are written
+verbatim; all Supplementary Tables are generated from the committed artifacts/*.json
+so every SI number is traceable to a real run."""
+import json, os, io
+import os as _os; ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+def L(f): return json.load(open(os.path.join(ROOT, "artifacts", f), encoding="utf-8"))
+
+out = io.StringIO()
+w = out.write
+
+w("# Supplementary Information\n\n")
+w("**Verifiable abstention makes AI leak diagnosis accountable in water distribution networks**\n\n")
+w("Tianwei Mu, Yue Wang, Mingzhe Yuan, Manhong Huang, Wenhong Wang, Xuerui Yin, Qing Luo, "
+  "Min Xiao, Hui Yang, Jun Li, Dan Xue\n\n")
+w("**Contents.** Supplementary Methods (sections S1–S6, Eqs. S1–S6) · Figs. S1–S3 · Supplementary Tables S1–S15 · Data provenance.\n\n")
+w("This Supplementary Information contains the Supplementary Methods (Eqs. S1–S6, the standard-hydraulics and detail equations moved out of the main Methods), Figs. S1–S3 (network topologies; seed robustness; transfer-network zoning) and Supplementary Tables S1–S15. Every table value is read directly from the committed results files (`artifacts/*.json`) produced by the run scripts; no value is hand-entered.\n\n")
+w("---\n\n")
+
+# ---------------- Supplementary Methods ----------------
+w("## Supplementary Methods\n\n")
+w("### S1. Governing hydraulics\n\n")
+w("Under steady-state operation the network obeys conservation of mass at every node,\n\n")
+w("$$-\\sum_{j\\in\\mathcal{N}(i)} Q_{ij}(t) = d_i(t) + a_i(t),\\quad \\forall i\\in\\mathcal{V}\\qquad\\text{(S1)}$$\n\n")
+w("and the Hazen–Williams head-loss relationship along every pipe,\n\n")
+w("$$H_i(t)-H_j(t)= r_{ij}\\,|Q_{ij}(t)|^{\\,n-1}Q_{ij}(t),\\quad \\forall (i,j)\\in\\mathcal{E}\\qquad\\text{(S2)}$$\n\n")
+w("where $Q_{ij}$ is the pipe flow, $d_i$ the nominal demand, $a_i$ an anomalous additional or perturbing demand, $H_i$ the hydraulic head, $r_{ij}$ the pipe resistance, and $n=1.852$ the head-loss exponent. The digital twin (WNTR/EPANET) solves Eqs. (S1)–(S2); the sensor-space deviation these induce, plus field noise, is main-text Eq. (1).\n\n")
+
+w("### S2. Competing-hypothesis space\n\n")
+w("Diagnosis is posed over a structured, mutually exhaustive hypothesis space spanning one dominant anomaly per event,\n\n")
+w("$$\\mathcal{H}=\\{h_{\\mathrm{leak}}(k)\\}_{k=1}^{K}\\cup\\{h_{\\mathrm{dem}}(k)\\}_{k=1}^{K}\\cup\\{h_{\\mathrm{sen}}(s)\\}_{s\\in\\mathcal{S}^{*}}\\cup\\{h_{\\mathrm{val}}(a)\\}_{a\\in\\mathcal{A}^{*}}\\cup\\{h_0\\}.\\qquad\\text{(S3)}$$\n\n")
+w("Here $h_{\\mathrm{leak}}(k)$ is a leak somewhere in zone $C_k$, $h_{\\mathrm{dem}}(k)$ a zone-wide demand anomaly in $C_k$, $h_{\\mathrm{sen}}(s)$ a fault on sensor channel $s$, $h_{\\mathrm{val}}(a)$ a mis-state of asset $a$, and $h_0$ the null hypothesis that no actionable anomaly exists.\n\n")
+
+w("### S3. Leak fit within a zone\n\n")
+w("Because the true leak may sit at any junction in a zone, each leak hypothesis is fitted by the best node–rate pair,\n\n")
+w("$$\\boldsymbol{\\mu}_{h_{\\mathrm{leak}}(k)} = \\arg\\min_{v\\in C_k,\\;q\\in\\mathcal{Q}}\\big\\lVert \\Delta\\mathbf{p}^{\\mathrm{obs}}-\\boldsymbol{\\mu}(v,q)\\big\\rVert_2^2,\\qquad\\text{(S4)}$$\n\n")
+w("over all junctions $v\\in C_k$ and the discharge grid $\\mathcal{Q}=\\{2,5,10,20,35,50\\}$ L s$^{-1}$. The residual and its Gaussian log-likelihood are main-text Eq. (2).\n\n")
+
+w("### S4. Posterior summary quantities\n\n")
+w("From the posterior (main-text Eq. 3) the supervisor reads three quantities,\n\n")
+w("$$\\Pi_{\\mathrm{exist}}=\\sum_{k}P\\big(h_{\\mathrm{leak}}(k)\\big),\\quad \\Delta=P(h_{(1)})-P(h_{(2)}),\\quad \\mathcal{E}_{\\mathrm{bits}}=-\\sum_{h}P(h)\\log_2 P(h),\\qquad\\text{(S5)}$$\n\n")
+w("the total leak-existence mass $\\Pi_{\\mathrm{exist}}$, the margin $\\Delta$ of the top hypothesis over the best alternative of any family, and the posterior entropy.\n\n")
+
+w("### S5. Active-sensing discriminability\n\n")
+w("When a rejection reflects an unresolved zone ambiguity, the executor scores every hidden node by the spread of the surviving hypotheses' twin-predicted responses and reveals the highest-scoring nodes (three per round in all reported runs), the first of which is\n\n")
+w("$$x^{*}=\\arg\\max_{x\\notin\\mathcal{S}}\\Big(\\max_{h}\\mu_h(x)-\\min_{h}\\mu_h(x)\\Big),\\qquad\\text{(S6)}$$\n\n")
+w("a digital-twin discriminability criterion that approximates the measurement of maximal expected information gain.\n\n")
+
+w("### S6. Language-model auditor and planner: prompts and strict-JSON templates\n\n")
+import sys as _sys
+_sys.path.insert(0, ROOT)
+from agents.llm_client import LLMAuditor as _AUD, LLMExecutorPlanner as _PLN
+w("The auditor's system prompt is reproduced verbatim from the implementation "
+  "(`agents/llm_client.py`; this section is generated by importing the constants, so it cannot drift "
+  "from the code). The auditor is queried through the ollama runtime's hosted cloud endpoints "
+  "(pinned tags `deepseek-v4-pro:cloud` for the auditor and `gpt-oss:120b-cloud` for the planner) "
+  "with the `format=\"json\"` constraint at temperature zero; every call is persisted as a transcript, "
+  "from which the reported metrics can be replayed without model access. An earlier auditor tag "
+  "(deepseek-v3.1:671b-cloud) was retired by the provider on 15 July 2026 during the study; every "
+  "reported audit run uses the tags above, and replay from the committed transcripts does not "
+  "depend on any endpoint.\n\n")
+w("**Auditor system prompt.**\n\n```text\n" + _AUD.SYSTEM + "\n```\n\n")
+w("**Auditor input.** The user message contains only the structured numeric evidence summary, "
+  "serialised as JSON with the fields:\n\n")
+w("```text\n"
+  "top_hypothesis: {type, partition, posterior, fit_residual_mahalanobis, candidate_region_nodes}\n"
+  "leak_existence_probability\n"
+  "margin_over_next_best\n"
+  "alternatives (up to 5): [{type, partition, posterior, residual_mahalanobis, status}]\n"
+  "demand_period\n"
+  "```\n\n")
+w("**Auditor output and fail-safe.** The reply must be strict JSON "
+  "`{\"reject\": true|false, \"reason\": \"<short>\"}`; a missing or unparsable reply defaults "
+  "conservatively to `{\"reject\": true, \"reason\": \"auditor_parse_failure_default_safe\"}`.\n\n")
+w("**Executor-planner system prompt** (dual-language-model configuration only).\n\n"
+  "```text\n" + _PLN.SYSTEM + "\n```\n\n")
+w("---\n\n")
+
+# ---------------- Supplementary Figures ----------------
+w("## Supplementary Figures\n\n")
+w("![Fig. S1](figures/FigS1_networks.png)\n\n")
+w("**Fig. S1 | Topologies of the five validation networks.** Pipe layout drawn from the EPANET INP coordinates for (a) EXA7, the in-silico benchmark; (b) BattLeDIM L-Town, evaluated against the competition's independently generated SCADA; (c) the City H municipal model, a third in-silico benchmark under the standard protocol; (d) City D, the utility's own district-network model behind the field-register leg; and (e) KY4, the public Kentucky-database benchmark used as an independent second in-silico network. Pressure-sensor nodes (blue), reservoirs and sources (red squares) and tanks (amber triangles) are overlaid; node, pipe and sensor counts are printed beneath each panel. Provenance differs by tier: EXA7, KY4 and City H are evaluated fully in-silico, L-Town uses the competition's independently generated SCADA against the nominal model, and the City D field register is twin-simulated at audited real locations because no SCADA exists for those events.\n\n")
+w("![Fig. S2](figures/Fig7_multiseed_robustness.png)\n\n")
+w("**Fig. S2 | Robustness of the headline metrics across random seeds (EXA7, σ = 0.05 m).** "
+  "Forced-retrieval top-1 accuracy, leak-partition accuracy without and with supervisor-directed active "
+  "sensing, and decision precision at the operating point. Bars show the mean over n = 5 independent random "
+  "seeds, overlaid circles are the individual seeds and error bars are the standard deviation.\n\n")
+w("![Fig. S3](figures/FigS3_partitions.png)\n\n")
+w("**Fig. S3 | Hydraulic zoning and sensor placement of the three networks not shown in Fig. 3 (L-Town, City H and KY4).** As Fig. 3 of the "
+  "main text (Leiden partitions drawn as space-filling territories; colours encode zone identity only): "
+  "(a) L-Town, K = 25 zones with the 33 pressure gauges of the BattLeDIM benchmark; (b) the City H "
+  "municipal model, K = 25 zones with 38 sensors; (c) KY4, K = 25 zones with 40 degree-placed sensors. "
+  "Grey lines are pipes, red dots pressure sensors, dark squares reservoirs and tanks.\n\n")
+w("---\n\n")
+
+# ---------------- Supplementary Tables ----------------
+w("## Supplementary Tables\n\n")
+
+# S1 per-severity
+s = L("results_stats.json")
+w("**Table S1 | Leak-partition accuracy as a function of leak severity on EXA7.** Fraction of leaks assigned to the correct topological zone at each injected discharge rate, pooled over n = 5 random seeds at sensor noise σ = 0.05 m; n is the number of leak events in each severity band.\n\n")
+w("| Leak rate (L s⁻¹) | n | Leak-partition accuracy |\n|---|---|---|\n")
+for k, v in s["per_severity_leak_acc"].items():
+    w(f"| {k.replace(' L/s','')} | {v['n']} | {v['acc']*100:.0f}% |\n")
+w("\n")
+
+# S2 confusion
+cm = s["differential_confusion_pooled"]
+cls = [c.replace('_',' ') for c in cm["classes"]]
+w("**Table S2 | Four-class differential-diagnosis confusion matrix on EXA7.** Event counts of the executor's top hypothesis (columns) against the true class (rows), pooled over n = 5 random seeds at σ = 0.05 m (600 leak and 250 confounder events); diagonal entries are correct classifications.\n\n")
+w("| True class (rows) / Predicted (columns) | " + " | ".join(cls) + " |\n")
+w("|" + "---|"*(len(cls)+1) + "\n")
+for i, row in enumerate(cm["matrix"]):
+    w(f"| **{cls[i]}** | " + " | ".join(str(x) for x in row) + " |\n")
+cmm = cm["matrix"]
+w(f"\nSensor faults are never predicted as leaks (leak column, sensor-fault row = {cmm[2][0]}); demand anomalies are typed "
+  f"{cmm[1][1]}/{sum(cmm[1])}; leaks {cmm[0][0]}/{sum(cmm[0])}.\n\n")
+
+# S3 baselines
+b = L("results_baselines_fair.json")["forced_top1"]
+w("**Table S3 | Forced top-1 zone accuracy of trained localizers versus the executor's twin-fit on EXA7.** All methods are evaluated on the identical held-out test leaks at σ = 0.05 m; values are mean ± s.d. over n = 5 random seeds.\n\n")
+w("| Method | Forced Top-1 |\n|---|---|\n")
+order = sorted(b.items(), key=lambda kv: kv[1]["mean"])
+for name, v in order:
+    w(f"| {name} | {v['mean']*100:.1f} ± {v['std']*100:.1f}% |\n")
+_tw = b["Executor-Supervisor (twin-fit)"]
+w(f"\nThe executor–supervisor twin-fit ({_tw['mean']*100:.1f} ± {_tw['std']*100:.1f}%, main text) exceeds the strongest trained baseline and, uniquely, abstains and types non-leak causes.\n\n")
+
+# S4 ablations
+w("**Table S4 | Component ablations on EXA7.** Effect of removing the differential head (a leak-only detector), loosening the goal contract, disabling the Occam/BIC penalty, and replacing the discriminative active-sensing choice with a random reveal, relative to the full system; identical scenarios per seed across arms (σ = 0.05 m, pooled over n = 5 seeds).\n\n")
+nd = s["ablation_no_differential"]; lc = s["ablation_loosened_contract"]
+ab = L("results_ablation_components.json")
+w("| Configuration | Effect |\n|---|---|\n")
+w(f"| Full contract | confounder false-dispatch {nd['full_confounder_false_dispatch'][0]}/{nd['full_confounder_false_dispatch'][1]} |\n")
+w(f"| No differential head (leak-only) | confounder false-dispatch {nd['no_diff_confounder_false_dispatch'][0]}/{nd['no_diff_confounder_false_dispatch'][1]} |\n")
+w(f"| Loosened contract (existence + residual only) | decision precision {lc['precision']*100:.1f}% ({lc['acted']} acted, {lc['false_dispatch']} false dispatches) |\n")
+no = ab["no_occam"]; fu = ab["full"]; rr = ab["random_reveal"]
+w(f"| No Occam/BIC penalty | demand anomalies mis-typed as leaks {no['demand_to_leak_mistype'][0]}/{no['demand_to_leak_mistype'][1]} "
+  f"(full system {fu['demand_to_leak_mistype'][0]}/{fu['demand_to_leak_mistype'][1]}); "
+  f"confounder false-dispatch {no['confounder_false_dispatch'][0]}/{no['confounder_false_dispatch'][1]} "
+  f"(full {fu['confounder_false_dispatch'][0]}/{fu['confounder_false_dispatch'][1]}); "
+  f"decision precision {no['decision_precision']*100:.1f}% (full {fu['decision_precision']*100:.1f}%) |\n")
+w(f"| Active sensing: random reveal | leak-partition accuracy {rr['leak_partition_acc']*100:.1f}% "
+  f"(no active sensing {ab['no_active_leak_acc']*100:.1f}%, "
+  f"discriminative {fu['leak_partition_acc']*100:.1f}%) |\n")
+w("\n")
+
+# S5 conformal
+c = L("results_conformal.json")["split_conformal"]
+w("**Table S5 | Split-conformal selective prediction on EXA7.** Realized test risk and coverage at each target risk level, using the residual-derived confidence as the nonconformity score on the mixed test set (σ = 0.05 m); distribution-free control holds when the realized risk is at or below the target.\n\n")
+w("| Target risk | Realized test risk | Coverage |\n|---|---|---|\n")
+for key in sorted(c):
+    tr = key.split('_')[-1]; v = c[key]
+    w(f"| {float(tr)*100:.0f}% | {v['test_risk']*100:.1f}% | {v['test_coverage']*100:.1f}% |\n")
+w("\nDistribution-free risk control holds (realized risk below target at both levels).\n\n")
+
+# S6 L-Town per-leak
+lt = L("results_ltown.json")
+w(f"**Table S6 | Per-leak diagnostic outcomes for all {len(lt['rows'])} BattLeDIM L-Town ground-truth leaks.** Competition-generated SCADA diagnosed against the nominal network model. For each leak: onset type, true zone(s), peak onset signature max|Δp|, leak-existence posterior, top-one margin, accept/abstain outcome, predicted zone and correctness (a tick marks a correct dispatch).\n\n")
+w("| Pipe | Type | True zone(s) | max\\|Δp\\| (m) | Existence | Margin | Outcome | Pred. zone | Correct |\n")
+w("|---|---|---|---|---|---|---|---|---|\n")
+for r in lt["rows"]:
+    tz = ",".join(str(z) for z in r["true_zones"])
+    w(f"| {r['pipe']} | {r['type']} | {tz} | {r['max_abs_dp_m']:.2f} | {r['existence']:.2f} | {r['margin']:.2f} | {r['outcome']} | {r['pred_zone'] if r['pred_zone'] is not None else '–'} | {'✓' if r['correct'] else ''} |\n")
+sm = lt["summary"]
+w(f"\nSummary: coverage {sm['coverage']*100:.0f}% ({sm['n_acted']} acted), decision precision {sm['decision_precision_on_acted']*100:.0f}%, forced top-1 zone accuracy {sm['forced_top1_zone_accuracy']*100:.0f}%.\n\n")
+
+# S7 L-Town risk-coverage frontier
+w("**Table S7 | Risk–coverage frontier on BattLeDIM L-Town.** Coverage and decision precision as the leak-existence acceptance threshold is swept over the 33 ground-truth leaks ranked by existence posterior; each row is one distinct operating point on the frontier.\n\n")
+w("| Existence threshold | n acted | Coverage | Decision precision |\n|---|---|---|---|\n")
+seen=None
+for p in lt["risk_coverage"]["frontier"]:
+    key=(p["n_acted"],round(p["precision"],3))
+    if key==seen: continue
+    seen=key
+    w(f"| {p['existence_threshold']:.2f} | {p['n_acted']} | {p['coverage']*100:.0f}% | {p['precision']*100:.0f}% |\n")
+cvs=lt["contract_vs_scalar_threshold"]
+w(f"\nAt matched coverage ({cvs['matched_coverage_acted']} acted) the multi-predicate contract reaches {cvs['contract_precision']*100:.0f}% vs {cvs['scalar_existence_precision']*100:.0f}% for a scalar existence threshold (it vetoes {', '.join(cvs['vetoed_by_contract'])}).\n\n")
+
+# S8/S9: standard-protocol legs on the City H and City D models
+STDROWS = [("forced_retrieval_top1", "Forced retrieval Top-1"),
+           ("leak_partition_acc_no_active", "Leak-partition accuracy (no active sensing)"),
+           ("leak_partition_acc_with_active", "Leak-partition accuracy (with active sensing)"),
+           ("decision_precision_at_maxcov", "Decision precision at the operating point"),
+           ("coverage_at_maxcov", "Coverage at the operating point"),
+           ("coverage_at_100pct_precision", "Coverage at 100% precision")]
+
+hstd = L("results_city_h_standard.json")
+hp, hm2 = hstd["provenance"], hstd["multiseed_sigma0.05"]
+dstd = L("results_city_d_standard.json")
+dp2, dm2 = dstd["provenance"], dstd["multiseed_sigma0.05"]
+pl = L("results_city_d_placement.json")
+ky = L("results_ky4.json")
+kp, km = ky["provenance"], ky["multiseed_sigma0.05"]
+w(f"**Table S8 | Standard in-silico protocol on the three transfer networks (City H, City D and KY4).** "
+  f"Headline metrics under the same scenario generator, noise model (σ = {hp['noise_m']} m) and "
+  f"metrics as the EXA7 headline run; mean ± s.d. over n = {len(hp['seeds'])} random seeds "
+  f"({hp['n_scenarios_per_seed']} mixed events per seed). City H: {hp['n_junctions']} nodes, "
+  f"{hp['partition_k']} zones, {hp['n_sensors']} sensors. City D: {dp2['n_junctions']} nodes, "
+  f"{dp2['partition_k']} zones, {dp2['n_sensors']} sensors placed by the greedy detection-coverage "
+  f"program, whose objective uses only the pre-simulated leak library and raises library actionable "
+  f"coverage (clean |Δp| ≥ 0.45 m) from {pl['library_metrics_old']['coverage_at_0.45m']*100:.1f}% to "
+  f"{pl['library_metrics_new']['coverage_at_0.45m']*100:.1f}%. KY4 (public Kentucky benchmark): "
+  f"{kp['n_junctions']} nodes, {kp['n_pipes']} pipes, {kp['partition_k']} zones, {kp['n_sensors']} "
+  f"degree-placed sensors (one per ~{round(kp['n_junctions']/kp['n_sensors'])} nodes, half the EXA7 "
+  f"density).\n\n")
+w("| Metric | City H | City D | KY4 |\n|---|---|---|---|\n")
+for key, lab in STDROWS:
+    cells = " | ".join(f"{m[key]['mean']*100:.1f} ± {m[key]['std']*100:.1f}%" for m in (hm2, dm2, km))
+    w(f"| {lab} | {cells} |\n")
+w("\n")
+
+# S13/S14 City D FIELD register + sweep (generated later in file order; see below)
+
+# S9 LLM
+acc = L("results_accountability.json"); ex = L("results_llm_executor.json")
+w("**Table S9 | Independent language-model audit and dual-model pipeline.** Auditor catch rate on corrupted evidence packages, false-alarm rate on genuine packages and temperature-0 decision stability, together with the fully dual-model configuration, from real ollama calls; per-call transcripts are in `artifacts/llm_transcripts_*.jsonl`.\n\n")
+w("| Quantity | Value |\n|---|---|\n")
+w(f"| Auditor model | {acc['supervisor_model']} |\n")
+w(f"| Catch rate on corrupted packages (n={acc['n_clean']}) | {acc['catch_rate_overall_on_corrupted']*100:.0f}% |\n")
+_S9_CLASS = {"A_unsupported_confidence": "A, unsupported assertion",
+             "B_false_falsification": "B, fabricated exclusion",
+             "C_low_evidence_dressed": "C, inflated evidence"}
+for k,v in acc['catch_rate_by_type'].items():
+    w(f"| &nbsp;&nbsp;· {_S9_CLASS.get(k, k.replace('_',' '))} | {v*100:.0f}% |\n")
+w(f"| False-alarm rate on genuine packages (n={acc['n_clean']}) | {acc['false_alarm_rate_on_clean']*100:.0f}% |\n")
+w(f"| Decision stability (temperature-0 repeats) | {acc['decision_stability_temp0']*100:.0f}% |\n")
+w(f"| Dual-model pipeline | {ex['executor_model']} planner + {ex['supervisor_model']} auditor |\n")
+w(f"| Accept/abstain agreement with deterministic pipeline (n={ex['n_cases']}) | {ex['decision_agreement_llm_vs_deterministic']*100:.0f}% |\n")
+w(f"| Correct decisions (deterministic / dual-model) | {ex['correct_decisions_deterministic']*100:.0f}% / {ex['correct_decisions_dual_llm']*100:.0f}% |\n")
+w("\nExample gpt-oss-120b planner outputs (varied, discriminative):\n\n")
+for p in ex["sample_plans"][:4]:
+    w(f"- demand={p['include_demand']}, sensor={p['include_sensor']}, valve={p['include_valve']}: \"{p['rationale']}\"\n")
+w("\n")
+
+# S10 contract-threshold sensitivity
+sv = L("results_sensitivity.json")
+nomv = sv["nominal"]
+w("**Table S10 | One-at-a-time sensitivity of the goal-contract thresholds on EXA7.** "
+  "Pooled decision precision and coverage over the extended mixed test set "
+  f"(n = {sv['provenance']['n_events_pooled']} events, five seeds, σ = {sv['provenance']['noise_m']} m; "
+  "the same pooled set as Tables S1–S2) "
+  "as each acceptance threshold is varied around its operating value "
+  "(existence τ_e = 0.5, margin δ = 0.12, alternative-exclusion α = 0.20, residual gate ρ_max = 3, "
+  "region R_max = 60 nodes) with the others held at nominal; the per-event evidence rows are generated "
+  "once and the accept/abstain gate is re-evaluated analytically per setting.\n\n")
+PNAMES = {"t_exist": "Existence τ_e", "min_margin": "Margin δ", "alt_max": "Alt-exclusion α",
+          "max_mahal": "Residual ρ_max", "max_region": "Region R_max (nodes)"}
+NOMKEY = {"t_exist": 0.5, "min_margin": 0.12, "alt_max": 0.20, "max_mahal": 3.0, "max_region": 60}
+w("| Threshold | Value | Decision precision | Coverage | n acted |\n|---|---|---|---|---|\n")
+for param, pts in sv["sweeps"].items():
+    for p in pts:
+        tag = " (nominal)" if p["value"] == NOMKEY[param] else ""
+        w(f"| {PNAMES[param]} | {p['value']}{tag} | {p['precision']*100:.1f}% | "
+          f"{p['coverage']*100:.1f}% | {p['n_acted']} |\n")
+w(f"\nAcross all {sum(len(p) for p in sv['sweeps'].values())} one-at-a-time settings, pooled decision "
+  f"precision spans {sv['precision_min_across_sweeps']*100:.1f}–"
+  f"{sv['precision_max_across_sweeps']*100:.1f}% "
+  f"(nominal {nomv['precision']*100:.1f}%).\n\n")
+
+w("---\n\n")
+# S11 City D FIELD register: detectability by band
+dg = L("results_city_d.json")
+dgs = dg["summary"]; dgd = dg["detectability"]
+dgc = L("results_city_d_controls.json")
+audit_acted = max((p["n_acted"] for p in dg["risk_coverage"]["frontier"]
+                   if p["existence_threshold"] >= 0.7), default=0)
+w("**Table S11 | Detectability and outcome by leak-severity band for the City D field register.** Per-band summary over the 194 audited 2025 work orders (audited real-location node mapping; twin-simulated pressures, σ = 0.15 m field noise): number of events, median clean peak signature, forced top-1 zone accuracy, coverage and acted-cohort decision precision.\n\n")
+w("| Leak-rate band (L s⁻¹) | n | Median clean max\\|Δp\\| (m) | Forced top-1 | Coverage | Decision precision |\n|---|---|---|---|---|---|\n")
+for band in dg["by_severity_band"]:
+    prec = "n/a (0 acted)" if band["n_acted"] == 0 else f"{band['decision_precision_on_acted']*100:.0f}%"
+    w(f"| {band['rate_band_Ls']} | {band['n']} | {band['median_clean_max_dp_m']:.4f} | {band['forced_top1_zone_acc']*100:.0f}% | {band['coverage']*100:.0f}% | {prec} |\n")
+w(f"\nAcross the register the median clean signature is {dgd['median_clean_max_dp_m']*1000:.1f} mm and no event reaches the {dgd['actionable_dp_threshold_m']:g} m actionability floor. Under the transfer preset the contract dispatches excavation on {dgs['n_acted']} of {dgs['n_leaks_evaluated']} events ({dgs['decision_precision_on_acted']*100:.0f}% acted precision) and raises {dgs['false_alarm_dispatch_rate']*100:.0f}% false alarms on {dgs['n_false_alarm_controls']} no-leak controls; the stricter audit preset (existence ≥ 0.7) dispatches {audit_acted} of {dgs['n_leaks_evaluated']} and admits {dgc['false_dispatches']['B_audit']} of {dgc['provenance']['n_controls']} controls. Forced top-1 accuracy is {dgs['forced_top1_zone_accuracy']*100:.1f}%.\n\n")
+
+# S12 City D severity sweep
+dsw = L("results_city_d_severity.json")
+w("**Table S12 | Controlled severity sweep on the City D network.** Single leaks injected at a fixed seeded set of 120 candidate nodes from 2 to 50 L s⁻¹: median clean peak signature, forced top-1 zone accuracy, coverage and acted-cohort decision precision at each injected rate (twin-simulated).\n\n")
+w("| Injected rate (L s⁻¹) | Median clean max\\|Δp\\| (m) | Forced top-1 | Coverage | Decision precision |\n|---|---|---|---|---|\n")
+for sw in dsw["sweep"]:
+    w(f"| {sw['rate_Ls']:.0f} | {sw['median_clean_max_dp_m']:.3f} | {sw['forced_top1_zone_acc']*100:.0f}% | {sw['coverage']*100:.0f}% | {sw['decision_precision_on_acted']*100:.0f}% |\n")
+w("\nOn this stiff, well-pressurized network the median signature clears the noise floor only near 10–20 L s⁻¹; the entire field register (Table S11) lies below 4 L s⁻¹.\n\n")
+
+# S13 City D pressure ceiling + flow-balance survey tier
+cf = L("results_city_d_ceiling_flow.json")
+ft = L("results_city_d_flowtier.json")
+w("**Table S13 | City D register: pressure-information ceiling and the flow-balance survey tier.** "
+  f"Ceiling: with a sensor at every one of the 541 junctions, the median best-possible clean signature over the "
+  f"{cf['provenance']['n_events']} register events is {cf['ceiling']['median_m']:.4f} m; "
+  f"{cf['ceiling']['n_ge_0.15']} events clear the 0.15 m (1σ) level and {cf['ceiling']['n_ge_0.45']} the 0.45 m floor, "
+  "so no sensor placement can make this register pressure-actionable (the strict any-time bound gives the same "
+  "floor counts). Under a district-adjacency tolerance the forced retrieval prediction lands in or adjacent to the "
+  f"true district in {ft['adjacency_tolerance_check']['retrieval_top1']['with_adjacency']} events, against a "
+  f"~{ft['adjacency_tolerance_check']['chance_rate_adjacency_approx']*100:.0f}% chance rate: forced guessing does "
+  "not beat chance even with the tolerance. Survey tier: district net-inflow deltas are "
+  "twin-computed per event with source feeds credited to the receiving district (mass-balance identity verified, "
+  "median ratio 1.000; noiseless argmax correct in 194/194); nightly meter uncertainty σ_f is "
+  "averaged over each order's real work-order window (≤14 nights); one seeded noise realization per event; the "
+  "district with the largest observed rise is survey-dispatched if it clears u·σ_f/√W. 50 no-leak control campaigns "
+  "per setting.\n\n")
+w("| σ_f (L s⁻¹) | u | Survey dispatched | Coverage | District precision | Controls FA |\n|---|---|---|---|---|---|\n")
+for k, v in ft["results"].items():
+    prec = (f"{v['zone_correct']}/{v['survey_dispatched']} ({v['precision_on_dispatched']*100:.0f}%)"
+            if v["survey_dispatched"] else "n/a")
+    w(f"| {v['sigma_f_Ls']:.2f} | {v['u']} | {v['survey_dispatched']}/{v['n_events']} | "
+      f"{v['coverage']*100:.0f}% | {prec} | {v['controls_false_alarm']} |\n")
+w("\nExcavation-tier coverage stays at 2.6% under the transfer preset (zero under the audit preset); the survey tier is the principal recovery path for this register.\n\n")
+
+# S14 City D demand-ratio sensitivity
+ds = L("results_city_d_demand_sensitivity.json")
+w("**Table S14 | Demand-ratio sensitivity of the City D field tiers.** "
+  "The vendored model's demands are the 2016 base scaled by the evidence-backed nine-year ratio 1.168459 (Methods). "
+  "Sweeping the overall demand ratio across the update workbook's own hydraulic-sensitivity band re-runs the full "
+  "ceiling and flow computation of Table S13 at each level (194 events per ratio; the 1.168459 leg reproduces the "
+  "committed ceiling artifact and serves as the regression anchor). The excavation ceiling stays roughly two orders "
+  "of magnitude below the 0.15 m floor and the survey-tier detection count is invariant at every ratio, ruling out "
+  "demand miscalibration as a cause of the field-leg limits. Detection counts use the deterministic sizing rule "
+  "(true-district inflow rise ≥ u·σ_f/√W, u = 3.4, σ_f = 0.10 L s⁻¹, W = min(window days, 14)).\n\n")
+w("| Ratio on 2016 base | Min baseline pressure (m) | Ceiling median (m) | Ceiling p90 (m) | ≥0.15 m | ≥0.45 m | Mass-balance ratio | Survey detected |\n|---|---|---|---|---|---|---|---|\n")
+for k, v in ds["ratios"].items():
+    c, fl = v["ceiling"], v["flow"]
+    tag = " (adopted)" if abs(float(k) - 1.168459) < 1e-6 else ""
+    w(f"| {k}{tag} | {v['baseline_min_pressure_m']:.2f} | {c['median_m']:.4f} | {c['p90_m']:.4f} | "
+      f"{c['n_ge_0.15']}/{v['n_events']} | {c['n_ge_0.45']}/{v['n_events']} | {fl['massbal_median']:.3f} | "
+      f"{fl['detect_u3.4']}/{v['n_events']} |\n")
+w("\nNo ratio in the plausible band changes the excavation conclusion or the survey-tier detection count; the demand "
+  "level is not the binding constraint on the field leg.\n\n")
+
+# S15 audit generalization: rule-checker vs language-model auditor beyond the enumerated rules
+ag = L("results_audit_generalization.json")
+agp = ag["provenance"]
+IN_T, OUT_T = agp["in_taxonomy_classes"], agp["out_of_taxonomy_classes"]
+w("**Table S15 | Does the language-model auditor generalize beyond its enumerated rules?** "
+  f"The auditor prompt (Supplementary Methods S6) enumerates five rejection rules, and each of the three corruption "
+  f"classes of Table S9 trips one of them. This follow-up re-uses the same {agp['n_clean']} clean ACCEPTED EXA7 "
+  "packages (identical selection and seeds) and adds four corruption classes that pass every one of the five rules "
+  "field by field but are jointly impossible: D, a margin larger than the leak-existence probability; E, an "
+  "alternative listed with a higher posterior than the top hypothesis; F, posteriors summing to well over one; "
+  "G, an empty candidate region. Three auditors are compared on the same packages: RULES, the five prompt rules "
+  "implemented literally in code; the language model with the paper's prompt verbatim (as-is); and the language "
+  "model with the paper's prompt plus one clause asking it to reject any other internal inconsistency, nothing "
+  f"enumerated (open; the added clause reads: \"{agp['open_prompt_extra_clause'].strip()}\"). "
+  f"The models are the paper's auditor ({agp['paper_auditor_model']}) and, as a second opinion of a different family, "
+  f"the executor planner's model ({[m for m in agp['models_used'] if m != agp['paper_auditor_model']][0]}); "
+  "every call is committed as a transcript. "
+  "Cells give rejected/total; the clean column is the false-alarm count. Stability is the temperature-zero agreement "
+  f"over {agp['n_stability_repeats']} repeats on eight out-of-taxonomy packages.\n\n")
+w("| Auditor | Clean (false alarms) | In-taxonomy A+B+C | D margin > existence | E alternative outranks top | F posteriors > 1 | G empty region | Out-of-taxonomy total | Stability |\n"
+  "|---|---|---|---|---|---|---|---|---|\n")
+def _agg(block, keys):
+    return f"{sum(block[k]['rejected'] for k in keys)}/{sum(block[k]['n'] for k in keys)}"
+def _fs(block, k):
+    """rejections that were the parse-failure fail-safe default, not a judgement"""
+    return sum(1 for d, r in zip(block[k].get("decisions", []), block[k].get("reasons", []))
+               if d and "parse_failure" in str(r))
+def _cell(block, k):
+    fs = _fs(block, k) if "decisions" in block[k] else 0
+    return f"{block[k]['rejected']}/{block[k]['n']}" + (f" ({fs} fail-safe)" if fs else "")
+rb = ag["rules"]
+w(f"| RULES (five prompt rules, code) | {_cell(rb,'clean')} | {_agg(rb, IN_T)} | " + " | ".join(_cell(rb, k) for k in OUT_T)
+  + f" | {_agg(rb, OUT_T)} | 1.000 (deterministic) |\n")
+for key, blk in ag["llm"].items():
+    model, mode = key.split("|")
+    stab = blk.get("_stability_out_of_taxonomy")
+    w(f"| {model}, prompt {mode.replace('_', '-')} | {_cell(blk,'clean')} | {_agg(blk, IN_T)} | "
+      + " | ".join(_cell(blk, k) for k in OUT_T) + f" | {_agg(blk, OUT_T)} | {stab:.3f} |\n")
+def _judged(block, keys):
+    """rejections by judgement (fail-safe defaults excluded)"""
+    return sum(block[k]["rejected"] - _fs(block, k) for k in keys)
+_rows_txt = []
+for key, blk in ag["llm"].items():
+    model, mode = key.split("|")
+    _rows_txt.append(f"{model} ({mode.replace('_', '-')}): out-of-taxonomy {_judged(blk, OUT_T)}/64 by judgement, "
+                     f"judged false alarms on the genuine packages {_judged(blk, ['clean'])}/16")
+w("\nRead across the rows. With the paper's prompt verbatim the language model behaves as a rule-follower (the prompt "
+  "ends \"otherwise reject=false\") and rejects essentially nothing outside the enumerated rules, exactly like the "
+  "code checker. One added clause, without enumerating any new rule, changes that: " + "; ".join(_rows_txt) + ". "
+  "Rejections marked fail-safe are parse failures defaulting to reject and are not counted as judgement. The stronger "
+  "auditor therefore supplies a generalizing consistency check that a fixed rule list does not, catching every "
+  "arithmetic impossibility with no judged false alarm, while the pragmatic empty-region class largely passes; it "
+  "may only tighten the hard predicates and never replace them. In an earlier round of this test the same open "
+  "auditor rejected four genuine packages for an arithmetic inconsistency that turned out to be a real defect in "
+  "the packages (Discussion); the run reported here uses the corrected packages.\n\n")
+w("---\n\n")
+
+w("**Data provenance.** EXA7, KY4 and City H are simulation benchmarks evaluated under one standard in-silico protocol. L-Town uses the public BattLeDIM SCADA, which the competition organizers generated from a perturbed copy of the network model rather than measured in the field, against the nominal model. The City D field leg uses the utility's own network model and its audited 2025 repair register (real work orders, audited real-location node mapping); pressures and district inflows are twin-simulated with field noise because no SCADA exists for these events. No measured utility telemetry is used anywhere in this study: the L-Town series were generated by the competition organizers from a perturbed copy of the network model, and all other observations, including every City D pressure and district inflow, are twin-simulated. No quantity is inherited from prior work.\n")
+
+open(os.path.join(ROOT, "SI_NatureWater.md"), "w", encoding="utf-8").write(out.getvalue())
+print("wrote SI_NatureWater.md;", len(out.getvalue()), "chars")

@@ -1,0 +1,71 @@
+{
+  "provenance": {
+    "objective": "greedy library detection coverage at theta=0.05 m, tie-break summed clipped |dp| (clip 0.5 m)",
+    "library": "leak_cache.pkl (25 cands/zone x 6 rates; NO register/test info)",
+    "n_sensors": 23
+  },
+  "old_sensors": [
+    "311",
+    "2521",
+    "561",
+    "167",
+    "277",
+    "809",
+    "948",
+    "534",
+    "228",
+    "1253",
+    "208",
+    "257",
+    "876",
+    "741",
+    "291",
+    "370",
+    "1420",
+    "2066",
+    "1348",
+    "416",
+    "355",
+    "1171",
+    "924"
+  ],
+  "new_sensors": [
+    "736",
+    "3083",
+    "369",
+    "319",
+    "2476",
+    "39-A",
+    "2284",
+    "1136",
+    "1142",
+    "195",
+    "43-A",
+    "640",
+    "186",
+    "2382",
+    "37-A",
+    "2298",
+    "1312",
+    "1080",
+    "358",
+    "1437",
+    "1390",
+    "584",
+    "248"
+  ],
+  "library_metrics_old": {
+    "coverage_at_0.05m": 0.7755555555555556,
+    "coverage_at_0.15m": 0.5297777777777778,
+    "coverage_at_0.45m": 0.29644444444444445,
+    "median_best_dp_m": 0.19101524353027344,
+    "mean_best_dp_m": 0.7567210965620147
+  },
+  "library_metrics_new": {
+    "coverage_at_0.05m": 0.8066666666666666,
+    "coverage_at_0.15m": 0.5657777777777778,
+    "coverage_at_0.45m": 0.3471111111111111,
+    "median_best_dp_m": 0.22944259643554688,
+    "mean_best_dp_m": 3.334819506274329
+  }
+}

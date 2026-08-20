@@ -1,0 +1,13 @@
+{
+  "supervisor_model": "deepseek-v4-pro:cloud",
+  "n_clean": 16,
+  "false_alarm_rate_on_clean": 0.0,
+  "catch_rate_overall_on_corrupted": 1.0,
+  "catch_rate_by_type": {
+    "A_unsupported_confidence": 1.0,
+    "B_false_falsification": 1.0,
+    "C_low_evidence_dressed": 1.0
+  },
+  "decision_stability_temp0": 1.0,
+  "note": "real LLM audits; auditor sees only the numeric summary (anti-collusion)."
+}

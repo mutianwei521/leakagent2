@@ -1,0 +1,129 @@
+{
+  "timestamp": "20260320_180216",
+  "total_sensors": 30,
+  "num_partitions": 15,
+  "threshold": 0.4,
+  "score": 0.9046577274577274,
+  "partition_details": {
+    "0": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "254",
+        "318"
+      ],
+      "resilience_score": 1.0
+    },
+    "1": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "49",
+        "212"
+      ],
+      "resilience_score": 1.0
+    },
+    "2": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "38",
+        "36"
+      ],
+      "resilience_score": 0.5142857142857142
+    },
+    "3": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "95",
+        "404"
+      ],
+      "resilience_score": 0.5857142857142857
+    },
+    "4": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "41",
+        "45"
+      ],
+      "resilience_score": 0.7424242424242424
+    },
+    "5": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "87",
+        "89"
+      ],
+      "resilience_score": 0.5714285714285714
+    },
+    "6": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "62",
+        "59"
+      ],
+      "resilience_score": 0.5769230769230769
+    },
+    "7": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "34",
+        "169"
+      ],
+      "resilience_score": 0.9199999999999999
+    },
+    "8": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "297",
+        "343"
+      ],
+      "resilience_score": 1.0
+    },
+    "9": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "64",
+        "284"
+      ],
+      "resilience_score": 1.0
+    },
+    "10": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "56",
+        "51"
+      ],
+      "resilience_score": 0.6944444444444444
+    },
+    "11": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "332",
+        "336"
+      ],
+      "resilience_score": 1.0
+    },
+    "12": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "92",
+        "115"
+      ],
+      "resilience_score": 1.0
+    },
+    "13": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "35",
+        "365"
+      ],
+      "resilience_score": 1.0
+    },
+    "14": {
+      "sensor_count": 2,
+      "sensor_nodes": [
+        "86",
+        "80"
+      ],
+      "resilience_score": 0.9444444444444444
+    }
+  }
+}

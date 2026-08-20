@@ -1,0 +1,747 @@
+{
+  "provenance": {
+    "benchmark": "BattLeDIM L-Town",
+    "model": "nominal L-TOWN.inp",
+    "data": "competition-provided SCADA pressures (simulated by the organizers) + labeled leaks",
+    "dp_method": "diurnal-matched onset step (+-24h)"
+  },
+  "summary": {
+    "n_leaks_evaluated": 33,
+    "n_acted": 4,
+    "coverage": 0.12121212121212122,
+    "decision_precision_on_acted": 1.0,
+    "forced_top1_zone_accuracy": 0.15151515151515152,
+    "sensor_std_m": 0.15
+  },
+  "risk_coverage": {
+    "frontier": [
+      {
+        "existence_threshold": 1.01,
+        "n_acted": 0,
+        "coverage": 0.0,
+        "precision": 1.0
+      },
+      {
+        "existence_threshold": 1.0,
+        "n_acted": 2,
+        "coverage": 0.06060606060606061,
+        "precision": 1.0
+      },
+      {
+        "existence_threshold": 0.989,
+        "n_acted": 3,
+        "coverage": 0.09090909090909091,
+        "precision": 1.0
+      },
+      {
+        "existence_threshold": 0.982,
+        "n_acted": 4,
+        "coverage": 0.12121212121212122,
+        "precision": 0.75
+      },
+      {
+        "existence_threshold": 0.962,
+        "n_acted": 5,
+        "coverage": 0.15151515151515152,
+        "precision": 0.8
+      },
+      {
+        "existence_threshold": 0.738,
+        "n_acted": 6,
+        "coverage": 0.18181818181818182,
+        "precision": 0.6666666666666666
+      },
+      {
+        "existence_threshold": 0.616,
+        "n_acted": 7,
+        "coverage": 0.21212121212121213,
+        "precision": 0.5714285714285714
+      },
+      {
+        "existence_threshold": 0.571,
+        "n_acted": 8,
+        "coverage": 0.24242424242424243,
+        "precision": 0.5
+      },
+      {
+        "existence_threshold": 0.524,
+        "n_acted": 9,
+        "coverage": 0.2727272727272727,
+        "precision": 0.5555555555555556
+      },
+      {
+        "existence_threshold": 0.478,
+        "n_acted": 10,
+        "coverage": 0.30303030303030304,
+        "precision": 0.5
+      },
+      {
+        "existence_threshold": 0.346,
+        "n_acted": 11,
+        "coverage": 0.3333333333333333,
+        "precision": 0.45454545454545453
+      },
+      {
+        "existence_threshold": 0.296,
+        "n_acted": 12,
+        "coverage": 0.36363636363636365,
+        "precision": 0.4166666666666667
+      },
+      {
+        "existence_threshold": 0.285,
+        "n_acted": 13,
+        "coverage": 0.3939393939393939,
+        "precision": 0.38461538461538464
+      },
+      {
+        "existence_threshold": 0.281,
+        "n_acted": 14,
+        "coverage": 0.42424242424242425,
+        "precision": 0.35714285714285715
+      },
+      {
+        "existence_threshold": 0.245,
+        "n_acted": 15,
+        "coverage": 0.45454545454545453,
+        "precision": 0.3333333333333333
+      },
+      {
+        "existence_threshold": 0.228,
+        "n_acted": 16,
+        "coverage": 0.48484848484848486,
+        "precision": 0.3125
+      },
+      {
+        "existence_threshold": 0.175,
+        "n_acted": 17,
+        "coverage": 0.5151515151515151,
+        "precision": 0.29411764705882354
+      },
+      {
+        "existence_threshold": 0.137,
+        "n_acted": 18,
+        "coverage": 0.5454545454545454,
+        "precision": 0.2777777777777778
+      },
+      {
+        "existence_threshold": 0.105,
+        "n_acted": 19,
+        "coverage": 0.5757575757575758,
+        "precision": 0.2631578947368421
+      },
+      {
+        "existence_threshold": 0.06,
+        "n_acted": 20,
+        "coverage": 0.6060606060606061,
+        "precision": 0.25
+      },
+      {
+        "existence_threshold": 0.044,
+        "n_acted": 21,
+        "coverage": 0.6363636363636364,
+        "precision": 0.23809523809523808
+      },
+      {
+        "existence_threshold": 0.036,
+        "n_acted": 22,
+        "coverage": 0.6666666666666666,
+        "precision": 0.22727272727272727
+      },
+      {
+        "existence_threshold": 0.021,
+        "n_acted": 23,
+        "coverage": 0.696969696969697,
+        "precision": 0.21739130434782608
+      },
+      {
+        "existence_threshold": 0.019,
+        "n_acted": 24,
+        "coverage": 0.7272727272727273,
+        "precision": 0.20833333333333334
+      },
+      {
+        "existence_threshold": 0.013,
+        "n_acted": 26,
+        "coverage": 0.7878787878787878,
+        "precision": 0.19230769230769232
+      },
+      {
+        "existence_threshold": 0.008,
+        "n_acted": 27,
+        "coverage": 0.8181818181818182,
+        "precision": 0.18518518518518517
+      },
+      {
+        "existence_threshold": 0.0,
+        "n_acted": 33,
+        "coverage": 1.0,
+        "precision": 0.15151515151515152
+      }
+    ],
+    "max_coverage_at_full_precision": {
+      "existence_threshold": 0.989,
+      "n_acted": 3,
+      "coverage": 0.09090909090909091,
+      "precision": 1.0
+    },
+    "max_coverage_at_90pct_precision": {
+      "existence_threshold": 0.989,
+      "n_acted": 3,
+      "coverage": 0.09090909090909091,
+      "precision": 1.0
+    }
+  },
+  "contract_vs_scalar_threshold": {
+    "matched_coverage_acted": 4,
+    "contract_precision": 1.0,
+    "scalar_existence_precision": 0.75,
+    "contract_acted": [
+      "p538",
+      "p673",
+      "p827",
+      "p866"
+    ],
+    "scalar_top_k": [
+      "p523",
+      "p538",
+      "p673",
+      "p827"
+    ],
+    "vetoed_by_contract": [
+      "p523"
+    ]
+  },
+  "rows": [
+    {
+      "pipe": "p257",
+      "type": "incipient",
+      "true_zones": [
+        23
+      ],
+      "max_abs_dp_m": 0.164,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.285,
+      "margin": 0.0,
+      "top1_mahal": 0.1,
+      "best_alt": 0.063
+    },
+    {
+      "pipe": "p461",
+      "type": "incipient",
+      "true_zones": [
+        19
+      ],
+      "max_abs_dp_m": 0.017,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.044,
+      "margin": 0.002,
+      "top1_mahal": 0.075,
+      "best_alt": 0.354
+    },
+    {
+      "pipe": "p232",
+      "type": "incipient",
+      "true_zones": [
+        8,
+        11
+      ],
+      "max_abs_dp_m": 0.122,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.245,
+      "margin": 0.017,
+      "top1_mahal": 0.385,
+      "best_alt": 0.095
+    },
+    {
+      "pipe": "p427",
+      "type": "incipient",
+      "true_zones": [
+        16
+      ],
+      "max_abs_dp_m": 0.049,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.06,
+      "margin": 0.003,
+      "top1_mahal": 0.15,
+      "best_alt": 0.289
+    },
+    {
+      "pipe": "p673",
+      "type": "abrupt",
+      "true_zones": [
+        4
+      ],
+      "max_abs_dp_m": 1.152,
+      "outcome": "ACTED",
+      "pred_zone": 4,
+      "top1_zone": 4,
+      "correct": true,
+      "existence": 1.0,
+      "margin": 0.998,
+      "top1_mahal": 0.624,
+      "best_alt": 0.001
+    },
+    {
+      "pipe": "p810",
+      "type": "incipient",
+      "true_zones": [
+        14
+      ],
+      "max_abs_dp_m": 1.008,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.0,
+      "margin": 1.0,
+      "top1_mahal": 0.971,
+      "best_alt": 0.0
+    },
+    {
+      "pipe": "p628",
+      "type": "incipient",
+      "true_zones": [
+        11
+      ],
+      "max_abs_dp_m": 0.169,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.228,
+      "margin": 0.015,
+      "top1_mahal": 0.426,
+      "best_alt": 0.111
+    },
+    {
+      "pipe": "p538",
+      "type": "abrupt",
+      "true_zones": [
+        6,
+        24
+      ],
+      "max_abs_dp_m": 0.401,
+      "outcome": "ACTED",
+      "pred_zone": 6,
+      "top1_zone": 6,
+      "correct": true,
+      "existence": 0.989,
+      "margin": 0.147,
+      "top1_mahal": 0.391,
+      "best_alt": 0.26
+    },
+    {
+      "pipe": "p866",
+      "type": "abrupt",
+      "true_zones": [
+        1
+      ],
+      "max_abs_dp_m": 0.403,
+      "outcome": "ACTED",
+      "pred_zone": 1,
+      "top1_zone": 1,
+      "correct": true,
+      "existence": 0.524,
+      "margin": 0.146,
+      "top1_mahal": 0.263,
+      "best_alt": 0.236
+    },
+    {
+      "pipe": "p31",
+      "type": "incipient",
+      "true_zones": [
+        0
+      ],
+      "max_abs_dp_m": 0.159,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.008,
+      "margin": 0.0,
+      "top1_mahal": 0.577,
+      "best_alt": 0.328
+    },
+    {
+      "pipe": "p654",
+      "type": "incipient",
+      "true_zones": [
+        11
+      ],
+      "max_abs_dp_m": 0.234,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.019,
+      "margin": 0.036,
+      "top1_mahal": 0.46,
+      "best_alt": 0.389
+    },
+    {
+      "pipe": "p183",
+      "type": "abrupt",
+      "true_zones": [
+        5
+      ],
+      "max_abs_dp_m": 0.383,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": 5,
+      "correct": false,
+      "existence": 0.962,
+      "margin": 0.04,
+      "top1_mahal": 0.406,
+      "best_alt": 0.18
+    },
+    {
+      "pipe": "p158",
+      "type": "abrupt",
+      "true_zones": [
+        15
+      ],
+      "max_abs_dp_m": 0.414,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": 18,
+      "correct": false,
+      "existence": 0.616,
+      "margin": 0.003,
+      "top1_mahal": 0.317,
+      "best_alt": 0.106
+    },
+    {
+      "pipe": "p369",
+      "type": "abrupt",
+      "true_zones": [
+        2
+      ],
+      "max_abs_dp_m": 0.433,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.738,
+      "margin": 0.046,
+      "top1_mahal": 0.335,
+      "best_alt": 0.146
+    },
+    {
+      "pipe": "p523",
+      "type": "abrupt",
+      "true_zones": [
+        24
+      ],
+      "max_abs_dp_m": 0.435,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": 6,
+      "correct": false,
+      "existence": 0.982,
+      "margin": 0.023,
+      "top1_mahal": 0.192,
+      "best_alt": 0.322
+    },
+    {
+      "pipe": "p827",
+      "type": "abrupt",
+      "true_zones": [
+        7
+      ],
+      "max_abs_dp_m": 0.579,
+      "outcome": "ACTED",
+      "pred_zone": 7,
+      "top1_zone": 7,
+      "correct": true,
+      "existence": 1.0,
+      "margin": 0.177,
+      "top1_mahal": 0.346,
+      "best_alt": 0.199
+    },
+    {
+      "pipe": "p280",
+      "type": "abrupt",
+      "true_zones": [
+        0
+      ],
+      "max_abs_dp_m": 0.322,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.571,
+      "margin": 0.228,
+      "top1_mahal": 0.085,
+      "best_alt": 0.113
+    },
+    {
+      "pipe": "p653",
+      "type": "incipient",
+      "true_zones": [
+        11
+      ],
+      "max_abs_dp_m": 0.027,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.036,
+      "margin": 0.003,
+      "top1_mahal": 0.092,
+      "best_alt": 0.26
+    },
+    {
+      "pipe": "p710",
+      "type": "abrupt",
+      "true_zones": [
+        15
+      ],
+      "max_abs_dp_m": 0.152,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.281,
+      "margin": 0.005,
+      "top1_mahal": 0.108,
+      "best_alt": 0.048
+    },
+    {
+      "pipe": "p514",
+      "type": "abrupt",
+      "true_zones": [
+        3
+      ],
+      "max_abs_dp_m": 0.232,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.478,
+      "margin": 0.012,
+      "top1_mahal": 0.217,
+      "best_alt": 0.116
+    },
+    {
+      "pipe": "p331",
+      "type": "abrupt",
+      "true_zones": [
+        2
+      ],
+      "max_abs_dp_m": 0.267,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.137,
+      "margin": 0.072,
+      "top1_mahal": 0.376,
+      "best_alt": 0.172
+    },
+    {
+      "pipe": "p193",
+      "type": "incipient",
+      "true_zones": [
+        14
+      ],
+      "max_abs_dp_m": 0.172,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.296,
+      "margin": 0.002,
+      "top1_mahal": 0.317,
+      "best_alt": 0.056
+    },
+    {
+      "pipe": "p277",
+      "type": "incipient",
+      "true_zones": [
+        23
+      ],
+      "max_abs_dp_m": 0.497,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.105,
+      "margin": 0.022,
+      "top1_mahal": 0.93,
+      "best_alt": 0.276
+    },
+    {
+      "pipe": "p142",
+      "type": "abrupt",
+      "true_zones": [
+        11
+      ],
+      "max_abs_dp_m": 0.395,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.346,
+      "margin": 0.456,
+      "top1_mahal": 0.556,
+      "best_alt": 0.194
+    },
+    {
+      "pipe": "p680",
+      "type": "abrupt",
+      "true_zones": [
+        4
+      ],
+      "max_abs_dp_m": 0.754,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.0,
+      "margin": 1.0,
+      "top1_mahal": 0.461,
+      "best_alt": 0.0
+    },
+    {
+      "pipe": "p586",
+      "type": "incipient",
+      "true_zones": [
+        22
+      ],
+      "max_abs_dp_m": 0.291,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.013,
+      "margin": 0.094,
+      "top1_mahal": 0.768,
+      "best_alt": 0.414
+    },
+    {
+      "pipe": "p721",
+      "type": "incipient",
+      "true_zones": [
+        15
+      ],
+      "max_abs_dp_m": 0.667,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.0,
+      "margin": 1.0,
+      "top1_mahal": 0.994,
+      "best_alt": 0.0
+    },
+    {
+      "pipe": "p800",
+      "type": "incipient",
+      "true_zones": [
+        1
+      ],
+      "max_abs_dp_m": 0.339,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.013,
+      "margin": 0.067,
+      "top1_mahal": 0.743,
+      "best_alt": 0.414
+    },
+    {
+      "pipe": "p123",
+      "type": "incipient",
+      "true_zones": [
+        8
+      ],
+      "max_abs_dp_m": 0.776,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.0,
+      "margin": 1.0,
+      "top1_mahal": 0.557,
+      "best_alt": 0.0
+    },
+    {
+      "pipe": "p455",
+      "type": "incipient",
+      "true_zones": [
+        21
+      ],
+      "max_abs_dp_m": 0.434,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.021,
+      "margin": 0.019,
+      "top1_mahal": 0.84,
+      "best_alt": 0.393
+    },
+    {
+      "pipe": "p762",
+      "type": "incipient",
+      "true_zones": [
+        12
+      ],
+      "max_abs_dp_m": 0.682,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.0,
+      "margin": 1.0,
+      "top1_mahal": 0.717,
+      "best_alt": 0.0
+    },
+    {
+      "pipe": "p426",
+      "type": "abrupt",
+      "true_zones": [
+        16
+      ],
+      "max_abs_dp_m": 0.607,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.0,
+      "margin": 1.0,
+      "top1_mahal": 0.631,
+      "best_alt": 0.0
+    },
+    {
+      "pipe": "p879",
+      "type": "incipient",
+      "true_zones": [
+        1,
+        14
+      ],
+      "max_abs_dp_m": 0.564,
+      "outcome": "ABSTAINED",
+      "pred_zone": null,
+      "top1_zone": null,
+      "correct": false,
+      "existence": 0.175,
+      "margin": 0.725,
+      "top1_mahal": 0.432,
+      "best_alt": 0.1
+    }
+  ]
+}

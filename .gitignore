@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.idea/
+.vscode/
+.DS_Store
+
+# EPANET/WNTR scratch files (never commit; see the serial-run note in reproduce_all.py)
+temp.inp
+temp.bin
+temp.rpt
+
+# rebuildable simulation caches (python data/*_build_library.py)
+data/*/leak_cache.pkl
+
+# local build outputs
+build_sd/
+visual_outputs/

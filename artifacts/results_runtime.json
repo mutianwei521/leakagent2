@@ -1,0 +1,36 @@
+{
+  "provenance": {
+    "network": "exa7",
+    "noise_m": 0.05,
+    "seed": 42,
+    "n_episodes": 110,
+    "protocol": "run_experiments.run_once episode structure; steady-state stats exclude the first (cache-warming) episode"
+  },
+  "setup_s": 0.020729899988509715,
+  "first_episode_step_s": 241.09532260004198,
+  "executor_step": {
+    "median_s": 0.021802900009788573,
+    "mean_s": 0.042611118350519776,
+    "p90_s": 0.060288679995574565,
+    "max_s": 0.2592978000175208
+  },
+  "active_sensing_round": {
+    "median_s": 0.007403900031931698,
+    "mean_s": 0.004981966971189057,
+    "p90_s": 0.01038175995927304,
+    "max_s": 0.012197499978356063
+  },
+  "full_episode": {
+    "median_s": 0.029045599978417158,
+    "mean_s": 0.04759308532170883,
+    "p90_s": 0.07018122000154159,
+    "max_s": 0.2697941999649629
+  },
+  "hardware": {
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "cpu_count": 32,
+    "platform": "Windows-10-10.0.26100-SP0",
+    "python": "3.11.15"
+  }
+}

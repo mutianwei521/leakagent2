@@ -1,0 +1,22 @@
+# EXA7 benchmark network (controlled in-silico study).
+# Paths are REPO-RELATIVE (resolved against the project root by data/context.py),
+# and the required inputs are vendored under data/exa7/ so a clone runs anywhere.
+network: exa7
+inp_file: data/exa7/Exa7.inp
+partition_file: data/exa7/partitions.pkl
+partition_k: 15
+sensor_fingerprints_file: data/exa7/sensor_fingerprints.json
+sensor_csv_glob: data/exa7/sensor_placement_*.csv
+sensor_summary_glob: data/exa7/sensor_summary_*.json
+partition_adjacency_file: data/exa7/partition_adjacency.json
+
+demand_periods:
+  night_low: 0.7
+  day_normal: 1.0
+  evening_peak: 1.2
+
+# null => leak injected as a constant additional demand (fixes the EXA7-only '881' pattern bug)
+leak_pattern: null
+
+noise:
+  sensor_std: 0.02      # clean-sim default; field-grade runs override to 0.15

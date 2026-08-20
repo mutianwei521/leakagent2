@@ -1,0 +1,47 @@
+{
+  "executor_model": "gpt-oss:120b-cloud",
+  "supervisor_model": "deepseek-v4-pro:cloud",
+  "n_cases": 16,
+  "note": "two different LLM families; numbers from twin; small demo",
+  "decision_agreement_llm_vs_deterministic": 1.0,
+  "correct_decisions_deterministic": 0.75,
+  "correct_decisions_dual_llm": 0.75,
+  "sample_plans": [
+    {
+      "include_demand": false,
+      "include_sensor": false,
+      "include_valve": false,
+      "rationale": "All deviations small, no significant anomalies."
+    },
+    {
+      "include_demand": false,
+      "include_sensor": false,
+      "include_valve": true,
+      "rationale": "Network-wide large drop suggests valve mis\u2011state; demand/sensor unlikely."
+    },
+    {
+      "include_demand": true,
+      "include_sensor": false,
+      "include_valve": true,
+      "rationale": "Widespread large drops across zones suggest demand surge or valve issue"
+    },
+    {
+      "include_demand": false,
+      "include_sensor": false,
+      "include_valve": true,
+      "rationale": "Network-wide large negative shift suggests valve mis\u2011state."
+    },
+    {
+      "include_demand": false,
+      "include_sensor": false,
+      "include_valve": true,
+      "rationale": "Widespread large negative shift suggests valve mis\u2011state."
+    },
+    {
+      "include_demand": false,
+      "include_sensor": false,
+      "include_valve": true,
+      "rationale": "Network-wide large drop suggests valve mis\u2011state."
+    }
+  ]
+}

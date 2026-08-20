@@ -1,0 +1,107 @@
+{
+  "provenance": {
+    "network": "ky4",
+    "source": "Kentucky research database of WDS models, vendored from the pip-installed WNTR package",
+    "n_junctions": 959,
+    "n_pipes": 1156,
+    "partition_k": 25,
+    "n_sensors": 40,
+    "n_scenarios_per_seed": 110,
+    "noise_m": 0.05,
+    "seeds": [
+      17,
+      42,
+      101,
+      2025,
+      31337
+    ],
+    "leak_cands": 25,
+    "protocol": "identical generator/metrics to eval/run_experiments.py"
+  },
+  "multiseed_sigma0.05": {
+    "forced_retrieval_top1": {
+      "mean": 0.8133333333333332,
+      "std": 0.04915960401250872,
+      "n": 5,
+      "values": [
+        0.7667,
+        0.7667,
+        0.8833,
+        0.8167,
+        0.8333
+      ]
+    },
+    "leak_partition_acc_no_active": {
+      "mean": 0.8666666666666666,
+      "std": 0.05773502691896257,
+      "n": 5,
+      "values": [
+        0.7667,
+        0.8667,
+        0.9,
+        0.9,
+        0.9
+      ]
+    },
+    "leak_partition_acc_with_active": {
+      "mean": 0.8866666666666667,
+      "std": 0.029814239699997212,
+      "n": 5,
+      "values": [
+        0.85,
+        0.8833,
+        0.8833,
+        0.8833,
+        0.9333
+      ]
+    },
+    "decision_precision_at_maxcov": {
+      "mean": 0.9639468213152425,
+      "std": 0.028900615315600186,
+      "n": 5,
+      "values": [
+        0.9737,
+        0.95,
+        1.0,
+        0.973,
+        0.9231
+      ]
+    },
+    "coverage_at_maxcov": {
+      "mean": 0.34363636363636363,
+      "std": 0.017486712783337594,
+      "n": 5,
+      "values": [
+        0.3455,
+        0.3636,
+        0.3182,
+        0.3364,
+        0.3545
+      ]
+    },
+    "coverage_at_100pct_precision": {
+      "mean": 0.14181818181818182,
+      "std": 0.16720848568763014,
+      "n": 5,
+      "values": [
+        0.0,
+        0.0,
+        0.3182,
+        0.3273,
+        0.0636
+      ]
+    },
+    "false_dispatch_at_maxcov": {
+      "mean": 0.03605317868475764,
+      "std": 0.028900615315600193,
+      "n": 5,
+      "values": [
+        0.0263,
+        0.05,
+        0.0,
+        0.027,
+        0.0769
+      ]
+    }
+  }
+}

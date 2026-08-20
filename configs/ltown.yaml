@@ -1,0 +1,12 @@
+# L-Town / BattLeDIM real benchmark (diagnosed against the NOMINAL model).
+network: ltown
+inp_file: data/ltown/L-TOWN.inp
+partition_file: data/ltown/partitions.pkl
+partition_k: 25
+sensor_fingerprints_file: data/ltown/sensor_fingerprints.json
+partition_adjacency_file: data/ltown/partition_adjacency.json
+demand_periods:
+  day_normal: 1.0
+leak_pattern: null
+noise:
+  sensor_std: 0.05

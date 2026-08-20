@@ -1,0 +1,96 @@
+{
+  "provenance": {
+    "signal_source": "results_city_d_ceiling_flow.json (twin-computed zone net-inflow deltas; mass-balance ratio 1.000)",
+    "obs_model": "nightly zone-inflow with meter sigma_f, averaged over W = min(window_days, 14) nights; one seeded realization per event (seed 42)",
+    "rule": "survey-dispatch the argmax zone iff its observed rise >= u * sigma_f/sqrt(W); u = 3.0 and 3.4 (15-zone corrected)",
+    "controls": "50 no-leak campaigns, W = 5 nights (register median)",
+    "sigma_f_grid_Ls": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "w_cap": 14
+  },
+  "results": {
+    "sigma0.05_u3.0": {
+      "sigma_f_Ls": 0.05,
+      "u": 3.0,
+      "n_events": 194,
+      "survey_dispatched": 109,
+      "coverage": 0.5618556701030928,
+      "zone_correct": 108,
+      "precision_on_dispatched": 0.9908256880733946,
+      "controls_false_alarm": "0/50",
+      "fa_rate": 0.0
+    },
+    "sigma0.05_u3.4": {
+      "sigma_f_Ls": 0.05,
+      "u": 3.4,
+      "n_events": 194,
+      "survey_dispatched": 105,
+      "coverage": 0.5412371134020618,
+      "zone_correct": 105,
+      "precision_on_dispatched": 1.0,
+      "controls_false_alarm": "0/50",
+      "fa_rate": 0.0
+    },
+    "sigma0.1_u3.0": {
+      "sigma_f_Ls": 0.1,
+      "u": 3.0,
+      "n_events": 194,
+      "survey_dispatched": 92,
+      "coverage": 0.4742268041237113,
+      "zone_correct": 91,
+      "precision_on_dispatched": 0.9891304347826086,
+      "controls_false_alarm": "0/50",
+      "fa_rate": 0.0
+    },
+    "sigma0.1_u3.4": {
+      "sigma_f_Ls": 0.1,
+      "u": 3.4,
+      "n_events": 194,
+      "survey_dispatched": 85,
+      "coverage": 0.4381443298969072,
+      "zone_correct": 85,
+      "precision_on_dispatched": 1.0,
+      "controls_false_alarm": "0/50",
+      "fa_rate": 0.0
+    },
+    "sigma0.2_u3.0": {
+      "sigma_f_Ls": 0.2,
+      "u": 3.0,
+      "n_events": 194,
+      "survey_dispatched": 66,
+      "coverage": 0.3402061855670103,
+      "zone_correct": 65,
+      "precision_on_dispatched": 0.9848484848484849,
+      "controls_false_alarm": "0/50",
+      "fa_rate": 0.0
+    },
+    "sigma0.2_u3.4": {
+      "sigma_f_Ls": 0.2,
+      "u": 3.4,
+      "n_events": 194,
+      "survey_dispatched": 57,
+      "coverage": 0.29381443298969073,
+      "zone_correct": 57,
+      "precision_on_dispatched": 1.0,
+      "controls_false_alarm": "0/50",
+      "fa_rate": 0.0
+    }
+  },
+  "adjacency_tolerance_check": {
+    "definition": "genuinely forced zone predictions scored correct if they land in the true district OR any adjacent district",
+    "retrieval_top1": {
+      "strict": "23/194",
+      "with_adjacency": "41/194"
+    },
+    "twinfit_top1": {
+      "strict": "28/194",
+      "with_adjacency": "62/194"
+    },
+    "chance_rate_strict": 0.067,
+    "chance_rate_adjacency_approx": 0.236,
+    "script": "eval/run_city_d_adjacency_check.py"
+  }
+}

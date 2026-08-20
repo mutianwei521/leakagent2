@@ -1,0 +1,60 @@
+{
+  "provenance": {
+    "network": "City H municipal WDN",
+    "model": "nominal dataset/city_h.inp",
+    "data": "controlled monosize leak sweep on candidate nodes; twin Δp (cached) + Gaussian field noise (sigma=0.15 m)",
+    "purpose": "detectability gradient vs leak severity, to contrast with the real register's tiny-leak distribution"
+  },
+  "sensor_std_m": 0.15,
+  "n_test_nodes": 120,
+  "sweep": [
+    {
+      "rate_Ls": 2.0,
+      "n": 120,
+      "median_clean_max_dp_m": 0.0572,
+      "forced_top1_zone_acc": 0.025,
+      "coverage": 0.041666666666666664,
+      "decision_precision_on_acted": 0.6
+    },
+    {
+      "rate_Ls": 5.0,
+      "n": 120,
+      "median_clean_max_dp_m": 0.1432,
+      "forced_top1_zone_acc": 0.11666666666666667,
+      "coverage": 0.18333333333333332,
+      "decision_precision_on_acted": 0.6363636363636364
+    },
+    {
+      "rate_Ls": 10.0,
+      "n": 120,
+      "median_clean_max_dp_m": 0.2857,
+      "forced_top1_zone_acc": 0.20833333333333334,
+      "coverage": 0.24166666666666667,
+      "decision_precision_on_acted": 0.6206896551724138
+    },
+    {
+      "rate_Ls": 20.0,
+      "n": 120,
+      "median_clean_max_dp_m": 0.5726,
+      "forced_top1_zone_acc": 0.3,
+      "coverage": 0.23333333333333334,
+      "decision_precision_on_acted": 0.6071428571428571
+    },
+    {
+      "rate_Ls": 35.0,
+      "n": 120,
+      "median_clean_max_dp_m": 1.0425,
+      "forced_top1_zone_acc": 0.38333333333333336,
+      "coverage": 0.36666666666666664,
+      "decision_precision_on_acted": 0.7272727272727273
+    },
+    {
+      "rate_Ls": 50.0,
+      "n": 120,
+      "median_clean_max_dp_m": 1.4976,
+      "forced_top1_zone_acc": 0.6,
+      "coverage": 0.525,
+      "decision_precision_on_acted": 0.8095238095238095
+    }
+  ]
+}

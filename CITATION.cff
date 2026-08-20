@@ -1,0 +1,64 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "LeakAgent-2: verifiable abstention for accountable AI leak diagnosis in water distribution networks"
+type: software
+authors:
+  - family-names: Mu
+    given-names: Tianwei
+  - family-names: Wang
+    given-names: Yue
+  - family-names: Yuan
+    given-names: Mingzhe
+  - family-names: Huang
+    given-names: Manhong
+  - family-names: Wang
+    given-names: Wenhong
+  - family-names: Yin
+    given-names: Xuerui
+  - family-names: Luo
+    given-names: Qing
+  - family-names: Xiao
+    given-names: Min
+  - family-names: Yang
+    given-names: Hui
+  - family-names: Li
+    given-names: Jun
+  - family-names: Xue
+    given-names: Dan
+repository-code: "https://github.com/mutianwei521/leakagent2"
+url: "https://arxiv.org/abs/2608.18836"
+license: MIT
+identifiers:
+  - type: doi
+    value: 10.48550/arXiv.2608.18836
+    description: arXiv preprint of the accompanying paper
+preferred-citation:
+  type: article
+  title: "Verifiable abstention makes AI leak diagnosis accountable in water distribution networks"
+  year: 2026
+  journal: "arXiv"
+  doi: 10.48550/arXiv.2608.18836
+  url: "https://arxiv.org/abs/2608.18836"
+  authors:
+    - family-names: Mu
+      given-names: Tianwei
+    - family-names: Wang
+      given-names: Yue
+    - family-names: Yuan
+      given-names: Mingzhe
+    - family-names: Huang
+      given-names: Manhong
+    - family-names: Wang
+      given-names: Wenhong
+    - family-names: Yin
+      given-names: Xuerui
+    - family-names: Luo
+      given-names: Qing
+    - family-names: Xiao
+      given-names: Min
+    - family-names: Yang
+      given-names: Hui
+    - family-names: Li
+      given-names: Jun
+    - family-names: Xue
+      given-names: Dan

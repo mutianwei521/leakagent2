@@ -1,0 +1,664 @@
+{
+  "provenance": {
+    "dev_seed": 17,
+    "test_seeds": [
+      42,
+      101,
+      2025,
+      31337
+    ],
+    "noise_m": 0.05,
+    "n_test": 440
+  },
+  "ece": {
+    "raw": 0.043445568872778485,
+    "calibrated": 0.10396481953944745
+  },
+  "precision_at_cov0.30": {
+    "calibrated_threshold": 0.9937888198757764,
+    "existence_only": 0.9257425742574258,
+    "goal_contract": 0.9924242424242424
+  },
+  "split_conformal": {
+    "target_risk_0.05": {
+      "threshold": 0.7787037412736948,
+      "test_coverage": 0.3659090909090909,
+      "test_risk": 0.006211180124223614
+    },
+    "target_risk_0.1": {
+      "threshold": 0.4824380341393273,
+      "test_coverage": 0.43636363636363634,
+      "test_risk": 0.046875
+    }
+  },
+  "calibrated_curve": [
+    {
+      "t": 0.0,
+      "coverage": 1.0,
+      "precision": 0.45681818181818185,
+      "risk": 0.5431818181818182
+    },
+    {
+      "t": 0.02,
+      "coverage": 0.8386363636363636,
+      "precision": 0.5447154471544715,
+      "risk": 0.4552845528455285
+    },
+    {
+      "t": 0.04,
+      "coverage": 0.8272727272727273,
+      "precision": 0.5521978021978022,
+      "risk": 0.44780219780219777
+    },
+    {
+      "t": 0.06,
+      "coverage": 0.8204545454545454,
+      "precision": 0.556786703601108,
+      "risk": 0.44321329639889195
+    },
+    {
+      "t": 0.08,
+      "coverage": 0.8090909090909091,
+      "precision": 0.5646067415730337,
+      "risk": 0.4353932584269663
+    },
+    {
+      "t": 0.1,
+      "coverage": 0.7795454545454545,
+      "precision": 0.5860058309037901,
+      "risk": 0.4139941690962099
+    },
+    {
+      "t": 0.12,
+      "coverage": 0.5568181818181818,
+      "precision": 0.8204081632653061,
+      "risk": 0.17959183673469392
+    },
+    {
+      "t": 0.14,
+      "coverage": 0.5522727272727272,
+      "precision": 0.823045267489712,
+      "risk": 0.17695473251028804
+    },
+    {
+      "t": 0.16,
+      "coverage": 0.5477272727272727,
+      "precision": 0.8298755186721992,
+      "risk": 0.17012448132780078
+    },
+    {
+      "t": 0.18,
+      "coverage": 0.5454545454545454,
+      "precision": 0.8333333333333334,
+      "risk": 0.16666666666666663
+    },
+    {
+      "t": 0.2,
+      "coverage": 0.5431818181818182,
+      "precision": 0.8368200836820083,
+      "risk": 0.16317991631799167
+    },
+    {
+      "t": 0.22,
+      "coverage": 0.5340909090909091,
+      "precision": 0.8468085106382979,
+      "risk": 0.15319148936170213
+    },
+    {
+      "t": 0.24,
+      "coverage": 0.5318181818181819,
+      "precision": 0.8504273504273504,
+      "risk": 0.1495726495726496
+    },
+    {
+      "t": 0.26,
+      "coverage": 0.5318181818181819,
+      "precision": 0.8504273504273504,
+      "risk": 0.1495726495726496
+    },
+    {
+      "t": 0.28,
+      "coverage": 0.5272727272727272,
+      "precision": 0.853448275862069,
+      "risk": 0.14655172413793105
+    },
+    {
+      "t": 0.3,
+      "coverage": 0.5136363636363637,
+      "precision": 0.8716814159292036,
+      "risk": 0.12831858407079644
+    },
+    {
+      "t": 0.32,
+      "coverage": 0.5045454545454545,
+      "precision": 0.8828828828828829,
+      "risk": 0.11711711711711714
+    },
+    {
+      "t": 0.34,
+      "coverage": 0.5,
+      "precision": 0.8863636363636364,
+      "risk": 0.11363636363636365
+    },
+    {
+      "t": 0.36,
+      "coverage": 0.49772727272727274,
+      "precision": 0.8858447488584474,
+      "risk": 0.11415525114155256
+    },
+    {
+      "t": 0.38,
+      "coverage": 0.47954545454545455,
+      "precision": 0.9004739336492891,
+      "risk": 0.09952606635071093
+    },
+    {
+      "t": 0.4,
+      "coverage": 0.4659090909090909,
+      "precision": 0.9170731707317074,
+      "risk": 0.08292682926829265
+    },
+    {
+      "t": 0.42,
+      "coverage": 0.45227272727272727,
+      "precision": 0.9346733668341709,
+      "risk": 0.0653266331658291
+    },
+    {
+      "t": 0.44,
+      "coverage": 0.45,
+      "precision": 0.9343434343434344,
+      "risk": 0.06565656565656564
+    },
+    {
+      "t": 0.46,
+      "coverage": 0.44545454545454544,
+      "precision": 0.9438775510204082,
+      "risk": 0.056122448979591844
+    },
+    {
+      "t": 0.48,
+      "coverage": 0.43863636363636366,
+      "precision": 0.9533678756476683,
+      "risk": 0.04663212435233166
+    },
+    {
+      "t": 0.5,
+      "coverage": 0.4318181818181818,
+      "precision": 0.9526315789473684,
+      "risk": 0.047368421052631615
+    },
+    {
+      "t": 0.52,
+      "coverage": 0.425,
+      "precision": 0.9518716577540107,
+      "risk": 0.048128342245989275
+    },
+    {
+      "t": 0.54,
+      "coverage": 0.42272727272727273,
+      "precision": 0.956989247311828,
+      "risk": 0.043010752688172005
+    },
+    {
+      "t": 0.56,
+      "coverage": 0.42045454545454547,
+      "precision": 0.9567567567567568,
+      "risk": 0.043243243243243246
+    },
+    {
+      "t": 0.58,
+      "coverage": 0.4159090909090909,
+      "precision": 0.9617486338797814,
+      "risk": 0.03825136612021862
+    },
+    {
+      "t": 0.6,
+      "coverage": 0.4068181818181818,
+      "precision": 0.9608938547486033,
+      "risk": 0.03910614525139666
+    },
+    {
+      "t": 0.62,
+      "coverage": 0.4022727272727273,
+      "precision": 0.9717514124293786,
+      "risk": 0.02824858757062143
+    },
+    {
+      "t": 0.64,
+      "coverage": 0.3977272727272727,
+      "precision": 0.9714285714285714,
+      "risk": 0.02857142857142858
+    },
+    {
+      "t": 0.66,
+      "coverage": 0.39545454545454545,
+      "precision": 0.9712643678160919,
+      "risk": 0.028735632183908066
+    },
+    {
+      "t": 0.68,
+      "coverage": 0.39090909090909093,
+      "precision": 0.9709302325581395,
+      "risk": 0.029069767441860517
+    },
+    {
+      "t": 0.7000000000000001,
+      "coverage": 0.3840909090909091,
+      "precision": 0.9763313609467456,
+      "risk": 0.023668639053254448
+    },
+    {
+      "t": 0.72,
+      "coverage": 0.3840909090909091,
+      "precision": 0.9763313609467456,
+      "risk": 0.023668639053254448
+    },
+    {
+      "t": 0.74,
+      "coverage": 0.38181818181818183,
+      "precision": 0.9761904761904762,
+      "risk": 0.023809523809523836
+    },
+    {
+      "t": 0.76,
+      "coverage": 0.3795454545454545,
+      "precision": 0.9820359281437125,
+      "risk": 0.017964071856287456
+    },
+    {
+      "t": 0.78,
+      "coverage": 0.3659090909090909,
+      "precision": 0.9937888198757764,
+      "risk": 0.006211180124223614
+    },
+    {
+      "t": 0.8,
+      "coverage": 0.35,
+      "precision": 0.9935064935064936,
+      "risk": 0.00649350649350644
+    },
+    {
+      "t": 0.8200000000000001,
+      "coverage": 0.2318181818181818,
+      "precision": 1.0,
+      "risk": 0.0
+    },
+    {
+      "t": 0.84,
+      "coverage": 0.0022727272727272726,
+      "precision": 1.0,
+      "risk": 0.0
+    },
+    {
+      "t": 0.86,
+      "coverage": 0.0,
+      "precision": 1.0,
+      "risk": 0.0
+    },
+    {
+      "t": 0.88,
+      "coverage": 0.0,
+      "precision": 1.0,
+      "risk": 0.0
+    },
+    {
+      "t": 0.9,
+      "coverage": 0.0,
+      "precision": 1.0,
+      "risk": 0.0
+    },
+    {
+      "t": 0.92,
+      "coverage": 0.0,
+      "precision": 1.0,
+      "risk": 0.0
+    },
+    {
+      "t": 0.9400000000000001,
+      "coverage": 0.0,
+      "precision": 1.0,
+      "risk": 0.0
+    },
+    {
+      "t": 0.96,
+      "coverage": 0.0,
+      "precision": 1.0,
+      "risk": 0.0
+    },
+    {
+      "t": 0.98,
+      "coverage": 0.0,
+      "precision": 1.0,
+      "risk": 0.0
+    },
+    {
+      "t": 1.0,
+      "coverage": 0.0,
+      "precision": 1.0,
+      "risk": 0.0
+    }
+  ],
+  "contract_curve": [
+    {
+      "max_mahal": 0.3,
+      "coverage": 0.0,
+      "n_acted": 0,
+      "decision_precision": 1.0,
+      "false_dispatch_rate": 0.0,
+      "selective_risk": 0.0
+    },
+    {
+      "max_mahal": 0.497,
+      "coverage": 0.0,
+      "n_acted": 0,
+      "decision_precision": 1.0,
+      "false_dispatch_rate": 0.0,
+      "selective_risk": 0.0
+    },
+    {
+      "max_mahal": 0.695,
+      "coverage": 0.004545454545454545,
+      "n_acted": 2,
+      "decision_precision": 1.0,
+      "false_dispatch_rate": 0.0,
+      "selective_risk": 0.0
+    },
+    {
+      "max_mahal": 0.892,
+      "coverage": 0.09090909090909091,
+      "n_acted": 40,
+      "decision_precision": 1.0,
+      "false_dispatch_rate": 0.0,
+      "selective_risk": 0.0
+    },
+    {
+      "max_mahal": 1.09,
+      "coverage": 0.3,
+      "n_acted": 132,
+      "decision_precision": 0.9924242424242424,
+      "false_dispatch_rate": 0.007575757575757576,
+      "selective_risk": 0.007575757575757576
+    },
+    {
+      "max_mahal": 1.287,
+      "coverage": 0.37272727272727274,
+      "n_acted": 164,
+      "decision_precision": 0.9817073170731707,
+      "false_dispatch_rate": 0.018292682926829267,
+      "selective_risk": 0.018292682926829267
+    },
+    {
+      "max_mahal": 1.485,
+      "coverage": 0.375,
+      "n_acted": 165,
+      "decision_precision": 0.9818181818181818,
+      "false_dispatch_rate": 0.01818181818181818,
+      "selective_risk": 0.01818181818181818
+    },
+    {
+      "max_mahal": 1.682,
+      "coverage": 0.375,
+      "n_acted": 165,
+      "decision_precision": 0.9818181818181818,
+      "false_dispatch_rate": 0.01818181818181818,
+      "selective_risk": 0.01818181818181818
+    },
+    {
+      "max_mahal": 1.879,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 2.077,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 2.274,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 2.472,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 2.669,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 2.867,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 3.064,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 3.262,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 3.459,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 3.656,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 3.854,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 4.051,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 4.249,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 4.446,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 4.644,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 4.841,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 5.038,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 5.236,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 5.433,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 5.631,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 5.828,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 6.026,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 6.223,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 6.421,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 6.618,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 6.815,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 7.013,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 7.21,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 7.408,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 7.605,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 7.803,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    },
+    {
+      "max_mahal": 8.0,
+      "coverage": 0.37727272727272726,
+      "n_acted": 166,
+      "decision_precision": 0.9759036144578314,
+      "false_dispatch_rate": 0.024096385542168676,
+      "selective_risk": 0.024096385542168676
+    }
+  ]
+}

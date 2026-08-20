@@ -1,0 +1,15 @@
+{
+  "provenance": {
+    "source": "BattLeDIM dataset_configuration.yaml (official leak labels)",
+    "definition": "a day is leak-free only if NO labelled leak interval intersects it; peak = max simultaneously active leaks"
+  },
+  "n_labelled_leaks": 33,
+  "span": {
+    "start": "2018-01-08",
+    "end": "2019-12-31",
+    "days": 723
+  },
+  "days_with_at_least_one_active_leak": 723,
+  "leak_free_days": 0,
+  "max_simultaneous_leaks": 16
+}

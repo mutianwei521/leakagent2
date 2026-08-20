@@ -1,0 +1,52 @@
+{
+  "provenance": {
+    "network": "city_d standard leg (current placement)",
+    "sigma_m": 0.05,
+    "n_controls": 50,
+    "seed": 7,
+    "gate42": 1.287,
+    "path": "identical to run_unified_battery controls (gate_act); presets B/C evaluated on the same rows"
+  },
+  "false_dispatches": {
+    "A_transfer": 2,
+    "B_audit": 0,
+    "C_floor": 1
+  },
+  "false_alarm_rates": {
+    "A_transfer": 0.04,
+    "B_audit": 0.0,
+    "C_floor": 0.02
+  },
+  "fired_controls": [
+    {
+      "control": 18,
+      "max_abs_dp_obs_m": 0.1381,
+      "max_obs_in_sigma": 2.76,
+      "existence": 0.5114,
+      "margin": 0.1613,
+      "mahal": 0.66,
+      "best_alt": 0.1185,
+      "region": 33,
+      "passes": {
+        "A": true,
+        "B": false,
+        "C": false
+      }
+    },
+    {
+      "control": 29,
+      "max_abs_dp_obs_m": 0.15,
+      "max_obs_in_sigma": 3.0,
+      "existence": 0.6096,
+      "margin": 0.2854,
+      "mahal": 0.75,
+      "best_alt": 0.1046,
+      "region": 39,
+      "passes": {
+        "A": true,
+        "B": false,
+        "C": true
+      }
+    }
+  ]
+}

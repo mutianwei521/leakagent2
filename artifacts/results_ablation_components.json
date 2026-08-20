@@ -1,0 +1,67 @@
+{
+  "provenance": {
+    "network": "exa7",
+    "noise_m": 0.05,
+    "seeds": [
+      17,
+      42,
+      101,
+      2025,
+      31337
+    ],
+    "gate": {
+      "t_exist": 0.5,
+      "min_margin": 0.12,
+      "alt_max": 0.2,
+      "max_mahal": 3.0,
+      "max_region": 60
+    },
+    "protocol": "identical scenarios per seed across arms; post-active rows unless noted"
+  },
+  "full": {
+    "n_events": 850,
+    "demand_to_leak_mistype": [
+      1,
+      100
+    ],
+    "confounder_false_dispatch": [
+      1,
+      250
+    ],
+    "n_acted": 391,
+    "decision_precision": 0.9360613810741688,
+    "coverage": 0.46,
+    "leak_partition_acc": 0.745
+  },
+  "no_occam": {
+    "n_events": 850,
+    "demand_to_leak_mistype": [
+      9,
+      100
+    ],
+    "confounder_false_dispatch": [
+      1,
+      250
+    ],
+    "n_acted": 402,
+    "decision_precision": 0.9303482587064676,
+    "coverage": 0.47294117647058825,
+    "leak_partition_acc": 0.7666666666666667
+  },
+  "random_reveal": {
+    "n_events": 850,
+    "demand_to_leak_mistype": [
+      2,
+      100
+    ],
+    "confounder_false_dispatch": [
+      1,
+      250
+    ],
+    "n_acted": 382,
+    "decision_precision": 0.918848167539267,
+    "coverage": 0.44941176470588234,
+    "leak_partition_acc": 0.7133333333333334
+  },
+  "no_active_leak_acc": 0.705
+}

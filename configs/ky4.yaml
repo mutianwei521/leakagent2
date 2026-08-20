@@ -1,0 +1,15 @@
+# KY4 public benchmark network (Kentucky research database of WDS models,
+# vendored from the pip-installed WNTR package). Fully in-silico second network:
+# same pipeline and noise model as EXA7. Sensor placement is the degree-based
+# topological observability proxy (same rule as the City H leg).
+network: ky4
+inp_file: data/ky4/ky4.inp
+partition_file: data/ky4/partitions.pkl
+partition_k: 25
+sensor_fingerprints_file: data/ky4/sensor_fingerprints.json
+partition_adjacency_file: data/ky4/partition_adjacency.json
+demand_periods:
+  day_normal: 1.0
+leak_pattern: null
+noise:
+  sensor_std: 0.05

@@ -1,0 +1,105 @@
+{
+  "provenance": {
+    "network": "city_h",
+    "n_junctions": 921,
+    "partition_k": 25,
+    "n_sensors": 38,
+    "n_scenarios_per_seed": 110,
+    "noise_m": 0.05,
+    "seeds": [
+      17,
+      42,
+      101,
+      2025,
+      31337
+    ],
+    "leak_cands": 25,
+    "protocol": "identical generator/metrics to eval/run_experiments.py"
+  },
+  "multiseed_sigma0.05": {
+    "forced_retrieval_top1": {
+      "mean": 0.36,
+      "std": 0.04183300132670379,
+      "n": 5,
+      "values": [
+        0.3167,
+        0.4,
+        0.4,
+        0.3167,
+        0.3667
+      ]
+    },
+    "leak_partition_acc_no_active": {
+      "mean": 0.61,
+      "std": 0.0547722557505166,
+      "n": 5,
+      "values": [
+        0.5833,
+        0.65,
+        0.6833,
+        0.5833,
+        0.55
+      ]
+    },
+    "leak_partition_acc_with_active": {
+      "mean": 0.6666666666666666,
+      "std": 0.05270462766947297,
+      "n": 5,
+      "values": [
+        0.5833,
+        0.7,
+        0.7167,
+        0.65,
+        0.6833
+      ]
+    },
+    "decision_precision_at_maxcov": {
+      "mean": 0.8978285792168851,
+      "std": 0.05523920605306538,
+      "n": 5,
+      "values": [
+        0.8214,
+        0.96,
+        0.931,
+        0.8636,
+        0.913
+      ]
+    },
+    "coverage_at_maxcov": {
+      "mean": 0.23090909090909087,
+      "std": 0.027723546694503453,
+      "n": 5,
+      "values": [
+        0.2545,
+        0.2273,
+        0.2636,
+        0.2,
+        0.2091
+      ]
+    },
+    "coverage_at_100pct_precision": {
+      "mean": 0.005454545454545454,
+      "std": 0.012196734422726126,
+      "n": 5,
+      "values": [
+        0.0,
+        0.0273,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "false_dispatch_at_maxcov": {
+      "mean": 0.10217142078311495,
+      "std": 0.055239206053065384,
+      "n": 5,
+      "values": [
+        0.1786,
+        0.04,
+        0.069,
+        0.1364,
+        0.087
+      ]
+    }
+  }
+}

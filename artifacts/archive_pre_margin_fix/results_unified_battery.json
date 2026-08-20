@@ -1,0 +1,107 @@
+{
+  "provenance": {
+    "noise_m": 0.05,
+    "seeds": [
+      17,
+      42,
+      101,
+      2025,
+      31337
+    ],
+    "n_controls": 50,
+    "control_seed": 7,
+    "gate": "per-seed max-coverage residual gate, t_exist=0.5, min_margin=0.12, alt_max=0.20, max_region=60 (identical to the headline operating point)"
+  },
+  "exa7": {
+    "per_seed_gates": {
+      "17": 1.287,
+      "42": 1.287,
+      "101": 1.485,
+      "2025": 1.287,
+      "31337": 1.879
+    },
+    "pooled": {
+      "n_events": 550,
+      "n_acted": 206,
+      "coverage": 0.37454545454545457,
+      "contract_precision": 0.9757281553398058,
+      "scalar_existence_precision_matched": 0.9466019417475728,
+      "contract_correct": 201,
+      "scalar_correct": 195
+    },
+    "no_leak_controls": {
+      "n": 50,
+      "dispatched": 0,
+      "false_alarm_rate": 0.0
+    }
+  },
+  "ky4": {
+    "per_seed_gates": {
+      "17": 1.485,
+      "42": 1.287,
+      "101": 1.485,
+      "2025": 1.682,
+      "31337": 5.828
+    },
+    "pooled": {
+      "n_events": 550,
+      "n_acted": 103,
+      "coverage": 0.18727272727272729,
+      "contract_precision": 0.9902912621359223,
+      "scalar_existence_precision_matched": 0.9223300970873787,
+      "contract_correct": 102,
+      "scalar_correct": 95
+    },
+    "no_leak_controls": {
+      "n": 50,
+      "dispatched": 0,
+      "false_alarm_rate": 0.0
+    }
+  },
+  "city_h": {
+    "per_seed_gates": {
+      "17": 1.287,
+      "42": 2.472,
+      "101": 2.867,
+      "2025": 3.656,
+      "31337": 1.287
+    },
+    "pooled": {
+      "n_events": 550,
+      "n_acted": 127,
+      "coverage": 0.2309090909090909,
+      "contract_precision": 0.8976377952755905,
+      "scalar_existence_precision_matched": 0.8503937007874016,
+      "contract_correct": 114,
+      "scalar_correct": 108
+    },
+    "no_leak_controls": {
+      "n": 50,
+      "dispatched": 0,
+      "false_alarm_rate": 0.0
+    }
+  },
+  "city_d": {
+    "per_seed_gates": {
+      "17": 1.287,
+      "42": 1.287,
+      "101": 1.287,
+      "2025": 1.287,
+      "31337": 1.287
+    },
+    "pooled": {
+      "n_events": 550,
+      "n_acted": 101,
+      "coverage": 0.18363636363636363,
+      "contract_precision": 0.8217821782178217,
+      "scalar_existence_precision_matched": 0.7425742574257426,
+      "contract_correct": 83,
+      "scalar_correct": 75
+    },
+    "no_leak_controls": {
+      "n": 50,
+      "dispatched": 2,
+      "false_alarm_rate": 0.04
+    }
+  }
+}
